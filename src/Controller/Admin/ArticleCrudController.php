@@ -23,7 +23,7 @@ class ArticleCrudController extends AbstractCrudController
             AssociationField::new('tags')->setFormTypeOption(
                 'by_reference',
                 false
-            )->autocomplete(),
+            ),
             TextEditorField::new('content')->setFormTypeOptions([
                 'block_name' => 'field_code_editor_widget',
             ]),
