@@ -37,10 +37,8 @@ class AppController extends AbstractController
             new Quote(quote: 'Success consists of going from failure to failure without loss of enthusiasm', author: 'Winston Churchill'),
         ];
 
-        $quote = $quotes[rand(0, count($quotes) - 1)];
-
         return $this->render('app/ladning.html.twig', [
-            'quote' => $quote,
+            'quote' => $quotes[array_rand($quotes)],
             'articles' => $articles
         ]);
     }
