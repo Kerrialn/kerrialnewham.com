@@ -2,11 +2,35 @@
 
     {% block body %}
         <div class="container">
-            <div class="row justify-content-center min-vh-80 align-items-center">
+            <div class="row justify-content-center">
                 <div class="col-12 col-md-6">
 
-                    <div class="list-group list-group-flush">
+                    <div class="fs-5 mb-4">Current Ventures</div>
 
+                    <div class="list-group list-group-flush">
+                        {% for venture in venturesPagination %}
+
+                            {% if venture.url is null %}
+                                <div class="list-group-item mb-3 border-0">
+                                    <div class="fs-5">{{ venture.title }}</div>
+                                    {% if venture.description %}
+                                        <div class="">{{ venture.description }}</div>
+                                    {% endif %}
+                                    <div class="text-end small text-muted">{{ venture.createdAt.diffForHumans }}</div>
+                                </div>
+                            {% else %}
+                                <a href="{{ absolute_url(venture.url) }}"
+                                   class="list-group-item list-group-item-action mb-3 border-0">
+                                    <div class="fs-5">{{ venture.title }}</div>
+                                    {% if venture.description %}
+                                        <div class="">{{ venture.description }}</div>
+                                    {% endif %}
+
+                                    <div class="text-end small text-muted">{{ venture.createdAt.diffForHumans }}</div>
+                                </a>
+                            {% endif %}
+
+                        {% endfor %}
                     </div>
 
                 </div>
