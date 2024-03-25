@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-6">
+                <div class="card border-0 shadow-sm mb-5">
+                    <div class="card-body">
+
+                        {{ form_start(articleFilter) }}
+                        <div class="row g-3 justify-content-between align-items-center">
+                            <div class="col-5">
+                                {{ form_row(articleFilter.keyword) }}
+                            </div>
+                            <div class="col-5">
+                                {{ form_row(articleFilter.tags) }}
+                            </div>
+                            <div class="col-2 text-end">
+                                <button type="submit" class="btn btn-dark rounded-circle">
+                                    <i class="bi bi-search fs-4"></i>
+                                </button>
+                            </div>
+                        </div>
+                        {{ form_end(articleFilter) }}
+                    </div>
+                </div>
+
+
+                <div class="list-group list-group-flush">
+                    {% for article in articlesPagination %}
+                        <a href="{{ path('article', {id: article.id}) }}"
+                           class="list-group-item border-0 list-group-item-action mb-3">
+                            <div class="fs-5">{{ article.title }}</div>
+                            <div class="small text-muted">{{ article.content|slice(0,250)|striptags }}</div>
+
+                        </a>
+                    {% else %}
+                        <div class="text-center text-muted small">nothing found</div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            {% if articlesPagination.getTotalItemCount() > articlesPagination.getItemNumberPerPage() %}
+                {{ knp_pagination_render(articlesPagination, viewParams={align: 'center', size: 'medium'}) }}
+            {% endif %}
+
+        </div>
+
+
+    </div>
+{% endblock %}

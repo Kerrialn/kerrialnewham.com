@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+
+
+    {% block body %}
+        <div class="container">
+            <div class="row justify-content-center min-vh-80 align-items-center">
+                <div class="col-12 col-md-6">
+
+                    <div class="list-group list-group-flush">
+
+                        <div class="list-group-item ">
+                            <div>Quick Phone Call?</div>
+                        </div>
+                        <div class="list-group-item border-0 mb-3 d-flex justify-content-between align-items-center" data-controller="clipboard" data-clipboard-success-content-value="Copied!">
+                                <div class="lead" value="+420 608 187 548" data-clipboard-target="source">+420 608 187 548</div>
+                                <a class="link-dark" type="button" data-action="clipboard#copy" data-clipboard-target="button">
+                                    <i class="bi bi-copy fs-4"></i>
+                                </a>
+                        </div>
+
+
+                        <div class="list-group-item ">
+                            <div>Take your time, get in touch by E-mail?</div>
+                        </div>
+                        <div class="list-group-item border-0 mb-3 d-flex justify-content-between align-items-center" data-controller="clipboard" data-clipboard-success-content-value="Copied!">
+                            <div class="lead" value="kerrialbeckettnewham@gmail.com" data-clipboard-target="source">kerrialbeckettnewham@gmail.com</div>
+                            <a class="link-dark" type="button" data-action="clipboard#copy" data-clipboard-target="button">
+                                <i class="bi bi-copy fs-4"></i>
+                            </a>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+
