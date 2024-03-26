@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Enum\VentureStatusEnum;
 use App\Repository\VentureRepository;
 use Carbon\CarbonImmutable;
 use Doctrine\DBAL\Types\Types;
@@ -29,6 +30,10 @@ class Venture
 
     #[ORM\Column(type: Types::DATETIME_IMMUTABLE)]
     private null|CarbonImmutable $createdAt = null;
+
+    #[ORM\Column(type: Types::STRING, nullable: true, enumType: VentureStatusEnum::class)]
+    private null|VentureStatusEnum $status = null;
+
 
     public function __construct()
     {
@@ -87,4 +92,15 @@ class Venture
 
         return $this;
     }
+
+    public function getStatus(): ?VentureStatusEnum
+    {
+        return $this->status;
+    }
+
+    public function setStatus(?VentureStatusEnum $status): void
+    {
+        $this->status = $status;
+    }
+
 }
