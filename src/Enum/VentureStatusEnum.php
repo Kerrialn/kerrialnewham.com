@@ -11,6 +11,7 @@ enum VentureStatusEnum: string
     case COMPLETE = 'complete';
 
     case MILESTONE = 'milestone';
+    case HOBBY = 'hobby';
 
     case RELEASE = 'release';
 

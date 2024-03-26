@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "db43dcabf9e38fb3e306f139e77e90c7",
+    "content-hash": "d026bec20551997f502597c5c30a64fa",
     "packages": [
         {
             "name": "carbonphp/carbon-doctrine-types",
@@ -1536,6 +1536,48 @@
                 }
             ],
             "time": "2023-10-06T06:47:41+00:00"
+        },
+        {
+            "name": "eventpoints/composer-json-parser",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/eventpoints/composer-json-parser.git",
+                "reference": "0bbea90a25aed5a40c928ae7ed59a023cb6d038d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/eventpoints/composer-json-parser/zipball/0bbea90a25aed5a40c928ae7ed59a023cb6d038d",
+                "reference": "0bbea90a25aed5a40c928ae7ed59a023cb6d038d",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/orm": "^3.1",
+                "php": "^8.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.5",
+                "rector/rector": "^0.18.1",
+                "symplify/easy-coding-standard": "^12.0"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ComposerJsonParser\\": "./src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Access your composer.json as an object",
+            "homepage": "https://github.com/eventpoints/composer-json-parser",
+            "support": {
+                "issues": "https://github.com/eventpoints/composer-json-parser/issues",
+                "source": "https://github.com/eventpoints/composer-json-parser/tree/main"
+            },
+            "time": "2024-03-26T13:15:40+00:00"
         },
         {
             "name": "knplabs/knp-components",
@@ -10397,7 +10439,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "eventpoints/composer-json-parser": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

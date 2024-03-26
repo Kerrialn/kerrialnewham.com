@@ -5,7 +5,7 @@ namespace App\Controller\Controller;
 use App\Model\Quote;
 use App\Repository\ArticleRepository;
 use App\Repository\VentureRepository;
-use Knp\Component\Pager\Pagination\PaginationInterface;
+use ComposerJsonParser\ParserFacade;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,7 +17,7 @@ class AppController extends AbstractController
     public function __construct(
         private readonly ArticleRepository  $articleRepository,
         private readonly VentureRepository  $ventureRepository,
-        private readonly PaginatorInterface $paginator
+        private readonly PaginatorInterface $paginator,
     )
     {
     }
