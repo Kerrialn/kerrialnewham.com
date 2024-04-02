@@ -28,16 +28,7 @@ class AppController extends AbstractController
     #[Route('/', name: 'landing')]
     public function index(): Response
     {
-        $articles = $this->articleRepository->findAll();
-        $slugger = new AsciiSlugger();
-
-        foreach ($articles as $article){
-            $article->setSlug($slugger->slug(strtolower($article->getTitle())));
-            $this->entityManager->persist($article);
-        }
-
-        $this->entityManager->flush();
-
+        $articles = $this->articleRepository->findRecentlyPublished();
 
         $quotes = [
             new Quote(quote: 'That\'s all any of us are: amateurs. we don\'t live long enough to be anything else.', author: 'Charlie Chaplin'),
