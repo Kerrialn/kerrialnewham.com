@@ -4,7 +4,7 @@
     "@symfony\/ux-autocomplete\/controller.js": "\/assets\/@symfony\/ux-autocomplete\/controller-d18de807e29352151ef094b16fb98bb5.js",
     "@symfony\/ux-turbo\/turbo_controller.js": "\/assets\/@symfony\/ux-turbo\/turbo_controller-ce5e32dafdec0b7752f02e3e2cb25751.js",
     "@symfony\/ux-turbo\/turbo_stream_controller.js": "\/assets\/@symfony\/ux-turbo\/turbo_stream_controller-a9d0d06c48318d35cc0e0aa27ef6b2dc.js",
-    "app.js": "\/assets\/app-99a7a456b8fd47a2998a78e80acd29aa.js",
+    "app.js": "\/assets\/app-3a6f95f4b5b8f3a0f94ed8f2e0cef092.js",
     "bootstrap.js": "\/assets\/bootstrap-a10c8b9fc7ecd0110b06ab2dafd81041.js",
     "bundles\/easyadmin\/app.5a01f8c5.js": "\/assets\/bundles\/easyadmin\/app.5a01f8c5-f2f97a7cab0424b693d9a312c003d08b.js",
     "bundles\/easyadmin\/app.5a01f8c5.js.LICENSE.txt": "\/assets\/bundles\/easyadmin\/app.5a01f8c5.js.LICENSE-787ecb5e435b3b908062b75a15e8305c.txt",
@@ -312,6 +312,7 @@
     "vendor\/bootstrap\/bootstrap.index.js": "\/assets\/vendor\/bootstrap\/bootstrap.index-c0423c99f6075e6b1cef7579b5c00d32.js",
     "vendor\/bootstrap\/dist\/css\/bootstrap.min.css": "\/assets\/vendor\/bootstrap\/dist\/css\/bootstrap.min-1712f0378f8675ca7cd423d6262fcccf.css",
     "vendor\/highlight.js\/highlight.js.index.js": "\/assets\/vendor\/highlight.js\/highlight.js.index-14d132e2307047ef05338dcfaa4bdb7e.js",
+    "vendor\/htmx.org\/htmx.org.index.js": "\/assets\/vendor\/htmx.org\/htmx.org.index-4fd9299de513c430a437c3611a5351a6.js",
     "vendor\/tom-select\/dist\/css\/tom-select.bootstrap5.css": "\/assets\/vendor\/tom-select\/dist\/css\/tom-select.bootstrap5-d1198a1334645c68df961af727e3c4fe.css",
     "vendor\/tom-select\/dist\/css\/tom-select.default.css": "\/assets\/vendor\/tom-select\/dist\/css\/tom-select.default-92c31c033a23be0cfebdda3d089d8b11.css",
     "vendor\/tom-select\/tom-select.index.js": "\/assets\/vendor\/tom-select\/tom-select.index-c0036889cf3e94dade1e56c11996b014.js"

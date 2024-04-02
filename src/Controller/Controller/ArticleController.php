@@ -59,12 +59,9 @@ class ArticleController extends AbstractController
 
     }
 
-    #[Route('/articles/{id}', name: 'article')]
+    #[Route('/articles/{slug}', name: 'article')]
     public function show(Article $article): Response
     {
-
-        $articles = $this->articleRepository->findRecentlyPublished();
-
         return $this->render('articles/show.html.twig', [
             'article' => $article
         ]);

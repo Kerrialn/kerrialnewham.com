@@ -5,6 +5,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-12 col-md-6">
+
                 <div class="card border-0 shadow-sm mb-5">
                     <div class="card-body">
 
@@ -27,9 +28,9 @@
                 </div>
 
 
-                <div class="list-group list-group-flush">
+                <div class="list-group list-group-flush" id="article-filter-results">
                     {% for article in articlesPagination %}
-                        <a href="{{ path('article', {id: article.id}) }}"
+                        <a href="{{ path('article', {slug: article.slug}) }}"
                            class="list-group-item border-0 list-group-item-action mb-3">
                             <div class="fs-5">{{ article.title }}</div>
                             <div class="small text-muted">{{ article.content|slice(0,250)|striptags }}</div>
@@ -39,14 +40,12 @@
                         <div class="text-center text-muted small">nothing found</div>
                     {% endfor %}
                 </div>
+
+                {% if articlesPagination.getTotalItemCount() > articlesPagination.getItemNumberPerPage() %}
+                    {{ knp_pagination_render(articlesPagination, viewParams={align: 'center', size: 'medium'}) }}
+                {% endif %}
+
             </div>
-
-            {% if articlesPagination.getTotalItemCount() > articlesPagination.getItemNumberPerPage() %}
-                {{ knp_pagination_render(articlesPagination, viewParams={align: 'center', size: 'medium'}) }}
-            {% endif %}
-
         </div>
-
-
     </div>
 {% endblock %}

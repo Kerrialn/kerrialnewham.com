@@ -55,4 +55,7 @@ return [
     '@stimulus-components/scroll-progress' => [
         'version' => '5.0.0',
     ],
+    'htmx.org' => [
+        'version' => '1.9.11',
+    ],
 ];

@@ -2,6 +2,7 @@
     "\/assets\/bootstrap.js",
     "\/assets\/styles\/app.css",
     "highlight.js",
+    "htmx.org",
     "@symfony\/stimulus-bundle",
     "@stimulus-components\/clipboard",
     "@stimulus-components\/scroll-progress",

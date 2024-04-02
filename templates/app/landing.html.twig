@@ -6,23 +6,36 @@
         <div class="row justify-content-center">
             <div class="col-12 col-md-6">
 
+                <div hx-sse="connect:/current_ventures">
+                    <div class="htmx-indicator d-flex justify-content-center my-4">
+                        <div class="spinner-border" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+                    <div hx-trigger="sse:current_venturescurrent_ventures" hx-get="{{ path('currently') }}"></div>
+                </div>
+
+
                 <div class="list-group list-group-flush">
 
                     <div class="list-group-item shadow-sm border-0 mb-3 ">
                         <div class="row justify-content-between align-items-center">
-                               <div class="col-3">
-                                   <img src="{{ asset('images/kerrial.jpg') }}" class="img-fluid rounded-circle my-2">
-                               </div>
-                               <div class="col-9">
-                                   <div class="fs-5 fw-light text-center">PHP Fullstack Consultant | Presenter | Teacher | Author </div>
-                               </div>
+                            <div class="col-3">
+                                <img src="{{ asset('images/kerrial.jpg') }}" class="img-fluid rounded-circle my-2">
+                            </div>
+                            <div class="col-9">
+                                <div class="fs-5 fw-light text-center">PHP Fullstack Consultant | Presenter | Teacher |
+                                    Author
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                     <div class="my-3">Recent posts</div>
 
                     {% for article in articles %}
-                        <a href="{{ path('article', {id: article.id}) }}" class="list-group-item border-0 list-group-item-action mb-3">
+                        <a href="{{ path('article', {slug: article.slug}) }}"
+                           class="list-group-item border-0 list-group-item-action mb-3">
                             <div class="fs-5">{{ article.title }}</div>
                             <div class="small text-muted">{{ article.content|slice(0,250)|striptags }}</div>
 

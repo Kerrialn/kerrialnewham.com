@@ -1,6 +1,6 @@
 {
     "app": {
-        "path": "\/assets\/app-99a7a456b8fd47a2998a78e80acd29aa.js",
+        "path": "\/assets\/app-3a6f95f4b5b8f3a0f94ed8f2e0cef092.js",
         "type": "js"
     },
     "\/assets\/bootstrap.js": {
@@ -73,6 +73,10 @@
     },
     "@stimulus-components\/scroll-progress": {
         "path": "\/assets\/vendor\/@stimulus-components\/scroll-progress\/scroll-progress.index-30ba1821c517f909443fece5bdd2a3ff.js",
+        "type": "js"
+    },
+    "htmx.org": {
+        "path": "\/assets\/vendor\/htmx.org\/htmx.org.index-4fd9299de513c430a437c3611a5351a6.js",
         "type": "js"
     }
 }

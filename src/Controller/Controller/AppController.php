@@ -6,10 +6,12 @@ use App\Model\Quote;
 use App\Repository\ArticleRepository;
 use App\Repository\VentureRepository;
 use ComposerJsonParser\ParserFacade;
+use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\AsciiSlugger;
 
 class AppController extends AbstractController
 {
@@ -18,6 +20,7 @@ class AppController extends AbstractController
         private readonly ArticleRepository  $articleRepository,
         private readonly VentureRepository  $ventureRepository,
         private readonly PaginatorInterface $paginator,
+        private readonly EntityManagerInterface $entityManager,
     )
     {
     }
@@ -25,7 +28,16 @@ class AppController extends AbstractController
     #[Route('/', name: 'landing')]
     public function index(): Response
     {
-        $articles = $this->articleRepository->findRecentlyPublished();
+        $articles = $this->articleRepository->findAll();
+        $slugger = new AsciiSlugger();
+
+        foreach ($articles as $article){
+            $article->setSlug($slugger->slug(strtolower($article->getTitle())));
+            $this->entityManager->persist($article);
+        }
+
+        $this->entityManager->flush();
+
 
         $quotes = [
             new Quote(quote: 'That\'s all any of us are: amateurs. we don\'t live long enough to be anything else.', author: 'Charlie Chaplin'),
@@ -43,11 +55,13 @@ class AppController extends AbstractController
         ]);
     }
 
+
     #[Route('/contact', name: 'contact')]
     public function contact(): Response
     {
         return $this->render('app/contact.html.twig');
     }
+
 
 
     #[Route('/currently', name: 'currently')]

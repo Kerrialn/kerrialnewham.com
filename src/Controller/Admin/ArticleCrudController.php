@@ -20,6 +20,7 @@ class ArticleCrudController extends AbstractCrudController
     {
         return [
             TextField::new('title'),
+            TextField::new('slug'),
             AssociationField::new('tags')->setFormTypeOption(
                 'by_reference',
                 false
