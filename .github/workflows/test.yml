@@ -28,7 +28,7 @@ jobs:
             coverage: none
 
       -   run: composer install --dev --no-progress
-      -   run: php bin/console asset-map:complie
+      -   run: php bin/console asset-map:compile
 
   ecs:
       runs-on: ubuntu-latest
