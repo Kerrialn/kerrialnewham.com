@@ -6,9 +6,6 @@ namespace App\Form\Filter;
 
 use App\DataTransferObject\ArticleFilterDto;
 use App\Entity\Tag;
-use Doctrine\Common\Collections\Order;
-use Doctrine\ORM\EntityRepository;
-use Doctrine\ORM\QueryBuilder;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;

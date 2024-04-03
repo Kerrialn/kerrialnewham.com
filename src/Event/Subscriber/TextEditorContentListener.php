@@ -2,6 +2,7 @@
 
 namespace App\Event\Subscriber;
 
+use App\Entity\Article;
 use EasyCorp\Bundle\EasyAdminBundle\Event\BeforeEntityUpdatedEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Event\BeforeEntityPersistedEvent;
@@ -19,6 +20,11 @@ class TextEditorContentListener implements EventSubscriberInterface
     public function onBeforeEntityPersisted(BeforeEntityPersistedEvent $event): void
     {
         $entity = $event->getEntityInstance();
+
+        if(!$entity instanceof Article){
+            return;
+        }
+
         if (method_exists($entity, 'getContent')) {
             $content = $entity->getContent();
             $processedContent = $this->processContent($content);
@@ -29,6 +35,11 @@ class TextEditorContentListener implements EventSubscriberInterface
     public function onBeforeEntityUpdated(BeforeEntityUpdatedEvent $event): void
     {
         $entity = $event->getEntityInstance();
+
+        if(!$entity instanceof Article){
+            return;
+        }
+
         if (method_exists($entity, 'getContent')) {
             $content = $entity->getContent();
             $processedContent = $this->processContent($content);
@@ -41,7 +52,7 @@ class TextEditorContentListener implements EventSubscriberInterface
         // Wrap <code> tag around content within <pre> tags
         $processedContent = preg_replace_callback(
             '/<pre>(.*?)<\/pre>/s',
-            function ($matches) {
+            function (array $matches): string {
                 return '<pre><code>' . $matches[1] . '</code></pre>';
             },
             $content

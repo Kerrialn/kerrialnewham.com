@@ -12,6 +12,6 @@ require_once dirname(__DIR__) . '/vendor/autoload_runtime.php';
 //    Request::setTrustedProxies($trustedProxies, Request::HEADER_X_FORWARDED_AWS_ELB);
 //}
 
-return function (array $context) {
+return function (array $context): \App\Kernel {
     return new Kernel($context['APP_ENV'], (bool)$context['APP_DEBUG']);
 };

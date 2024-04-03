@@ -5,13 +5,10 @@ namespace App\Controller\Controller;
 use App\Model\Quote;
 use App\Repository\ArticleRepository;
 use App\Repository\VentureRepository;
-use ComposerJsonParser\ParserFacade;
-use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\String\Slugger\AsciiSlugger;
 
 class AppController extends AbstractController
 {
@@ -20,7 +17,6 @@ class AppController extends AbstractController
         private readonly ArticleRepository  $articleRepository,
         private readonly VentureRepository  $ventureRepository,
         private readonly PaginatorInterface $paginator,
-        private readonly EntityManagerInterface $entityManager,
     )
     {
     }

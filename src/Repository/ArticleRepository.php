@@ -7,7 +7,6 @@ use App\Entity\Article;
 use App\Entity\Tag;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Collections\Order;
-use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -44,10 +43,9 @@ class ArticleRepository extends ServiceEntityRepository
     }
 
     /**
-     * @param ArticleFilterDto $articleFilterDto
      * @return array<int, Article>|Query
      */
-    public function findByFilter(ArticleFilterDto $articleFilterDto, bool $isQuery = false): \Doctrine\ORM\Query
+    public function findByFilter(ArticleFilterDto $articleFilterDto, bool $isQuery = false): Query|array
     {
         $qb = $this->createQueryBuilder('article');
 
@@ -60,7 +58,7 @@ class ArticleRepository extends ServiceEntityRepository
         }
 
         if ($articleFilterDto->getTags()->count() > 0) {
-            $ids = $articleFilterDto->getTags()->map(function (Tag $tag) {
+            $ids = $articleFilterDto->getTags()->map(function (Tag $tag): ?\Symfony\Component\Uid\Uuid {
                 return $tag->getId();
             });
 

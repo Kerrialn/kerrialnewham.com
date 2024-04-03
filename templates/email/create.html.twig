@@ -1,0 +1,20 @@
+<div class="card border-0 my-4" id="mailing-list-form">
+    <div class="card-body">
+        <div class="fs-5 mb-3">Join the mailing list</div>
+        {{ form_start(emailForm, {
+            action: path('mailing_list_form')
+        }) }}
+        <div class="input-group mb-3">
+            {{ form_row(emailForm.address) }}
+            <button type="submit" class="btn btn-outline-dark"
+                    hx-post="{{ path('mailing_list_form') }}"
+                    hx-target="#mailing-list-form"
+                    hx-swap="outerHTML"
+            >
+                <i class="bi bi-send-fill  fs-4"></i>
+            </button>
+        </div>
+        <div class="text-muted text-center small"> We respect your privacy </div>
+        {{ form_end(emailForm) }}
+    </div>
+</div>

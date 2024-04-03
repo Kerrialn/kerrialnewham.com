@@ -6,16 +6,6 @@
         <div class="row justify-content-center">
             <div class="col-12 col-md-6">
 
-                <div hx-sse="connect:/current_ventures">
-                    <div class="htmx-indicator d-flex justify-content-center my-4">
-                        <div class="spinner-border" role="status">
-                            <span class="visually-hidden">Loading...</span>
-                        </div>
-                    </div>
-                    <div hx-trigger="sse:current_venturescurrent_ventures" hx-get="{{ path('currently') }}"></div>
-                </div>
-
-
                 <div class="list-group list-group-flush">
 
                     <div class="list-group-item shadow-sm border-0 mb-3 ">
@@ -30,6 +20,8 @@
                             </div>
                         </div>
                     </div>
+
+                    <a href="{{ path('contact') }}" class="link-dark text-center lead">Need a full stack PHP contractor? Hire me now</a>
 
                     <div class="my-3">Recent posts</div>
 
@@ -48,16 +40,36 @@
                 </div>
 
 
-                <figure class="text-center my-5">
-                    <blockquote class="blockquote">
-                        <p class="lead">{{ quote.quote }}</p>
-                    </blockquote>
-                    <figcaption class="mt-2 blockquote-footer">
-                        <cite title="Source Title">{{ quote.author }}</cite>
-                    </figcaption>
-                </figure>
+                <div class="mb-5" hx-trigger="revealed" hx-get="{{ path('mailing_list_form') }}" hx-swap-oob="true">
+                    <div class="htmx-indicator my-4 d-flex justify-content-center">
+                        <div class="spinner-border" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+
 
             </div>
         </div>
     </div>
+
+
+    <div class="text-bg-dark">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-6">
+                    <figure class="text-center my-5">
+                        <blockquote class="blockquote">
+                            <p class="lead">{{ quote.quote }}</p>
+                        </blockquote>
+                        <figcaption class="mt-2 blockquote-footer">
+                            <cite title="Source Title">{{ quote.author }}</cite>
+                        </figcaption>
+                    </figure>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
 {% endblock %}

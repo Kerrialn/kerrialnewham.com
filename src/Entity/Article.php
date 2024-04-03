@@ -4,7 +4,6 @@ namespace App\Entity;
 
 use App\Repository\ArticleRepository;
 use Carbon\CarbonImmutable;
-use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
@@ -39,6 +38,9 @@ class Article
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $publishedAt = null;
 
+    /**
+     * @var Collection<int, Tag>|ArrayCollection<int, Tag>
+     */
     #[ORM\ManyToMany(targetEntity: Tag::class, inversedBy: 'articles')]
     private Collection $tags;
 

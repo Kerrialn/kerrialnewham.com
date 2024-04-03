@@ -3,7 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\CommentRepository;
-use Carbon\CarbonImmutable;
+use DateTimeImmutable;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\IdGenerator\UuidGenerator;
@@ -25,7 +25,7 @@ class Comment
     private ?string $name = null;
 
     #[ORM\Column(type: Types::DATETIME_IMMUTABLE)]
-    private null|CarbonImmutable $createdAt = null;
+    private null|DateTimeImmutable $createdAt = null;
 
     public function getId(): null|Uuid
     {
@@ -56,12 +56,12 @@ class Comment
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTimeImmutable
+    public function getCreatedAt(): ?DateTimeImmutable
     {
         return $this->createdAt;
     }
 
-    public function setCreatedAt(\DateTimeImmutable $createdAt): static
+    public function setCreatedAt(DateTimeImmutable $createdAt): static
     {
         $this->createdAt = $createdAt;
 

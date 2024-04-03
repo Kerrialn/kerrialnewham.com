@@ -19,7 +19,7 @@ class ArticleSlugListener
         $this->updateSlug($event);
     }
 
-    public function prePersit(PrePersistEventArgs $event): void
+    public function prePersist(PrePersistEventArgs $event): void
     {
         $this->updateSlug($event);
     }

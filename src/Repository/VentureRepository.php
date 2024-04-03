@@ -25,7 +25,6 @@ class VentureRepository extends ServiceEntityRepository
 
 
     /**
-     * @param bool $isQuery
      * @return array<int, Venture>|Query
      */
     public function findByCreatedAt(bool $isQuery = false): array|Query

@@ -21,6 +21,9 @@ class Tag
     #[ORM\Column(length: 255)]
     private ?string $content = null;
 
+    /**
+     * @var Collection<int, Article>|ArrayCollection<int, Article>
+     */
     #[ORM\ManyToMany(targetEntity: Article::class, mappedBy: 'tags')]
     private Collection $articles;
 
