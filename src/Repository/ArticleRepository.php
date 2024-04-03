@@ -9,6 +9,7 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Collections\Order;
 use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\Uid\Uuid;
 
 /**
  * @extends ServiceEntityRepository<Article>
@@ -35,6 +36,10 @@ class ArticleRepository extends ServiceEntityRepository
         $qb->orderBy('article.createdAt', Order::Descending->value)
             ->setMaxResults(5);
 
+        $qb->andWhere(
+            $qb->expr()->isNotNull('article.publishedAt')
+        );
+
         if ($isQuery) {
             return $qb->getQuery();
         }
@@ -57,14 +62,18 @@ class ArticleRepository extends ServiceEntityRepository
             )->setParameter('keyword', '%' . strtolower($articleFilterDto->getKeyword()) . '%');
         }
 
+        $qb->andWhere(
+            $qb->expr()->isNotNull('article.publishedAt')
+        );
+
         if ($articleFilterDto->getTags()->count() > 0) {
-            $ids = $articleFilterDto->getTags()->map(function (Tag $tag): ?\Symfony\Component\Uid\Uuid {
+            $ids = $articleFilterDto->getTags()->map(function (Tag $tag): ?Uuid {
                 return $tag->getId();
             });
 
             $qb->andWhere(
                 $qb->expr()->in('tag.id', ':ids')
-            )->setParameter('ids', $ids->toArray(),);
+            )->setParameter('ids', $ids->toArray());
         }
 
         if ($isQuery) {
