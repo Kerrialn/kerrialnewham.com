@@ -35,8 +35,8 @@ class Article
     #[ORM\Column(type: Types::DATETIME_IMMUTABLE, nullable: true)]
     private null|CarbonImmutable $updatedAt = null;
 
-    #[ORM\Column(nullable: true)]
-    private ?\DateTimeImmutable $publishedAt = null;
+    #[ORM\Column(type: Types::DATETIME_IMMUTABLE, nullable: true)]
+    private null|CarbonImmutable $publishedAt = null;
 
     /**
      * @var Collection<int, Tag>|ArrayCollection<int, Tag>
@@ -103,12 +103,12 @@ class Article
         return $this;
     }
 
-    public function getPublishedAt(): ?\DateTimeImmutable
+    public function getPublishedAt(): null|CarbonImmutable
     {
         return $this->publishedAt;
     }
 
-    public function setPublishedAt(?\DateTimeImmutable $publishedAt): static
+    public function setPublishedAt(null|CarbonImmutable $publishedAt): static
     {
         $this->publishedAt = $publishedAt;
 
