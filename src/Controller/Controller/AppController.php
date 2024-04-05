@@ -34,6 +34,7 @@ class AppController extends AbstractController
             new Quote(quote: 'Avoid having your ego so close to your position that when your position falls, your ego goes with it.', author: 'Colin Powell'),
             new Quote(quote: 'There is no enjoying the possession of anything valuable unless one has someone to share it with', author: 'Seneca'),
             new Quote(quote: 'Success consists of going from failure to failure without loss of enthusiasm', author: 'Winston Churchill'),
+            new Quote(quote: 'Dreams without goals, are just dreams and they ultimately fuel disappointment, on the road to achieving your dream you must apply disciple but more importantly consistency, because without commitment you\'ll never start, but without consistency you\'ll never finish.', author: 'Denzel Washington'),
         ];
 
         return $this->render('app/landing.html.twig', [
