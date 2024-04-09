@@ -31,7 +31,6 @@ class Email
         $this->createdAt = new CarbonImmutable();
     }
 
-
     public function getId(): ?Uuid
     {
         return $this->id;

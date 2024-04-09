@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
 
+{% block title %} {{ article.title }} {% endblock %}
+
 {% block body %}
     <div class="container">
         <div class="row justify-content-center">
@@ -11,7 +13,6 @@
                 <div class="mb-5">
                     {{ article.content|raw }}
                 </div>
-
 
             </div>
         </div>

@@ -18,10 +18,10 @@ class ArticleSlugListener implements EventSubscriberInterface
         ];
     }
 
-    public function updateSlug(BeforeEntityUpdatedEvent|BeforeEntityPersistedEvent $event) : void
+    public function updateSlug(BeforeEntityUpdatedEvent|BeforeEntityPersistedEvent $event): void
     {
         $entity = $event->getEntityInstance();
-        if(!$entity instanceof Article){
+        if(! $entity instanceof Article){
             return;
         }
 

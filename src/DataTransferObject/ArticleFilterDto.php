@@ -29,7 +29,6 @@ final class ArticleFilterDto
         $this->keyword = $keyword;
     }
 
-
     /**
      * @return ArrayCollection<int,Tag>
      */
@@ -38,7 +37,6 @@ final class ArticleFilterDto
         return $this->tags;
     }
 
-
     /**
      * @param ArrayCollection<int,Tag> $tags
      */
@@ -46,6 +44,4 @@ final class ArticleFilterDto
     {
         $this->tags = $tags;
     }
-
-
 }

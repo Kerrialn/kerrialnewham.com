@@ -9,7 +9,7 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Collections\Order;
 use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;
-use Symfony\Component\Uid\Uuid;
+use Psr\Log\LoggerInterface;
 
 /**
  * @extends ServiceEntityRepository<Article>
@@ -21,7 +21,10 @@ use Symfony\Component\Uid\Uuid;
  */
 class ArticleRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
+    public function __construct(
+        private readonly LoggerInterface $logger,
+        ManagerRegistry $registry
+    )
     {
         parent::__construct($registry, Article::class);
     }
@@ -56,7 +59,7 @@ class ArticleRepository extends ServiceEntityRepository
 
         $qb->leftJoin('article.tags', 'tag');
 
-        if (!empty($articleFilterDto->getKeyword())) {
+        if ($articleFilterDto->getKeyword() !== null && $articleFilterDto->getKeyword() !== '' && $articleFilterDto->getKeyword() !== '0') {
             $qb->andWhere(
                 $qb->expr()->like($qb->expr()->lower('article.title'), ':keyword')
             )->setParameter('keyword', '%' . strtolower($articleFilterDto->getKeyword()) . '%');
@@ -67,8 +70,8 @@ class ArticleRepository extends ServiceEntityRepository
         );
 
         if ($articleFilterDto->getTags()->count() > 0) {
-            $ids = $articleFilterDto->getTags()->map(function (Tag $tag): ?Uuid {
-                return $tag->getId();
+            $ids = $articleFilterDto->getTags()->map(function (Tag $tag): string {
+                return $tag->getId()->toRfc4122();
             });
 
             $qb->andWhere(
@@ -79,6 +82,8 @@ class ArticleRepository extends ServiceEntityRepository
         if ($isQuery) {
             return $qb->getQuery();
         }
+
+        $this->logger->debug(message: $qb->getQuery()->getResult());
 
         return $qb->getQuery()->getResult();
 

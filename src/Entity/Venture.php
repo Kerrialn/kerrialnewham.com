@@ -34,7 +34,6 @@ class Venture
     #[ORM\Column(type: Types::STRING, nullable: true, enumType: VentureStatusEnum::class)]
     private null|VentureStatusEnum $status = null;
 
-
     public function __construct()
     {
         $this->createdAt = new CarbonImmutable();
@@ -102,5 +101,4 @@ class Venture
     {
         $this->status = $status;
     }
-
 }

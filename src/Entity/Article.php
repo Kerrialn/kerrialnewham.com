@@ -29,7 +29,7 @@ class Article
     #[ORM\Column(type: Types::TEXT)]
     private ?string $content = null;
 
-    #[ORM\Column(type: Types::DATETIME_IMMUTABLE,)]
+    #[ORM\Column(type: Types::DATETIME_IMMUTABLE, )]
     private CarbonImmutable|null $createdAt = null;
 
     #[ORM\Column(type: Types::DATETIME_IMMUTABLE, nullable: true)]
@@ -125,7 +125,7 @@ class Article
 
     public function addTag(Tag $tag): static
     {
-        if (!$this->tags->contains($tag)) {
+        if (! $this->tags->contains($tag)) {
             $this->tags->add($tag);
         }
 
@@ -148,5 +148,4 @@ class Article
     {
         $this->slug = $slug;
     }
-
 }

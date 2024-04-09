@@ -21,8 +21,6 @@ class EmailRepository extends ServiceEntityRepository
         parent::__construct($registry, Email::class);
     }
 
-
-
     public function save(Email $entity, bool $flush = false): void
     {
         $this->getEntityManager()

@@ -20,5 +20,4 @@ class AdminRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Admin::class);
     }
-
 }

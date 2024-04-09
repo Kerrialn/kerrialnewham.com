@@ -20,7 +20,7 @@ class TextEditorContentListener implements EventSubscriberInterface
     public function processContent(BeforeEntityUpdatedEvent|BeforeEntityPersistedEvent $event): void
     {
         $entity = $event->getEntityInstance();
-        if (!$entity instanceof Article) {
+        if (! $entity instanceof Article) {
             return;
         }
 

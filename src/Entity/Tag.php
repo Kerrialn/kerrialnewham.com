@@ -59,7 +59,7 @@ class Tag
 
     public function addArticle(Article $article): static
     {
-        if (!$this->articles->contains($article)) {
+        if (! $this->articles->contains($article)) {
             $this->articles->add($article);
             $article->addTag($this);
         }

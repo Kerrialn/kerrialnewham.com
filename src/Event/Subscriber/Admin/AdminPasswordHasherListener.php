@@ -10,7 +10,6 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class AdminPasswordHasherListener implements EventSubscriberInterface
 {
-
     public function __construct(
         private readonly UserPasswordHasherInterface $userPasswordHasher
     )
@@ -29,7 +28,7 @@ class AdminPasswordHasherListener implements EventSubscriberInterface
     {
         $entity = $event->getEntityInstance();
 
-        if (!($entity instanceof Admin)) {
+        if (! ($entity instanceof Admin)) {
             return;
         }
 

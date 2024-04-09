@@ -12,10 +12,9 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class AppController extends AbstractController
 {
-
     public function __construct(
-        private readonly ArticleRepository  $articleRepository,
-        private readonly VentureRepository  $ventureRepository,
+        private readonly ArticleRepository $articleRepository,
+        private readonly VentureRepository $ventureRepository,
         private readonly PaginatorInterface $paginator,
     )
     {
@@ -39,18 +38,15 @@ class AppController extends AbstractController
 
         return $this->render('app/landing.html.twig', [
             'quote' => $quotes[array_rand($quotes)],
-            'articles' => $articles
+            'articles' => $articles,
         ]);
     }
-
 
     #[Route('/contact', name: 'contact')]
     public function contact(): Response
     {
         return $this->render('app/contact.html.twig');
     }
-
-
 
     #[Route('/currently', name: 'currently')]
     public function currently(): Response
@@ -63,9 +59,7 @@ class AppController extends AbstractController
         );
 
         return $this->render('app/currently.html.twig', [
-            'venturesPagination' => $venturesPagination
+            'venturesPagination' => $venturesPagination,
         ]);
     }
-
-
 }

@@ -13,8 +13,6 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class MailListController extends AbstractController
 {
-
-
     public function __construct(
         private readonly EmailRepository $emailRepository
     )
@@ -29,28 +27,31 @@ class MailListController extends AbstractController
 
         $emailForm->handleRequest($request);
         if ($emailForm->isSubmitted() && $emailForm->isValid()) {
-
-            $isEmailAlreadyOnList = $this->emailRepository->findOneBy(['address' => $emailForm->get('address')->getData()]);
+            $email = $this->emailRepository->findOneBy([
+                'address' => $email->getAddress(),
+            ]);
+            $isEmailAlreadyOnList = $this->emailRepository->findOneBy([
+                'address' => $emailForm->get('address')->getData(),
+            ]);
 
             if ($isEmailAlreadyOnList instanceof Email) {
                 return $this->render('partial/_message.html.twig', [
                     'type' => FlashEnum::ERROR->value,
-                    'message' => 'Hmmm, something went wrong'
+                    'message' => 'Hmmm, something went wrong',
                 ]);
             } else {
                 $this->emailRepository->save(entity: $email, flush: true);
                 return $this->render('partial/_message.html.twig', [
                     'type' => FlashEnum::MESSAGE->value,
-                    'message' => 'successfully added to the mailing list'
+                    'message' => 'successfully added to the mailing list',
                 ]);
             }
 
         }
 
         return $this->render('email/create.html.twig', [
-            'emailForm' => $emailForm
+            'emailForm' => $emailForm,
         ]);
 
     }
-
 }

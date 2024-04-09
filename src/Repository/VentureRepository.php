@@ -23,7 +23,6 @@ class VentureRepository extends ServiceEntityRepository
         parent::__construct($registry, Venture::class);
     }
 
-
     /**
      * @return array<int, Venture>|Query
      */

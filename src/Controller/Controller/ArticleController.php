@@ -15,10 +15,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ArticleController extends AbstractController
 {
-
-
     public function __construct(
-        private readonly ArticleRepository  $articleRepository,
+        private readonly ArticleRepository $articleRepository,
         private readonly PaginatorInterface $paginator,
     )
     {
@@ -48,27 +46,28 @@ class ArticleController extends AbstractController
 
             return $this->render('articles/index.html.twig', [
                 'articlesPagination' => $articlesPagination,
-                'articleFilter' => $articleFilter
+                'articleFilter' => $articleFilter,
             ]);
         }
 
         return $this->render('articles/index.html.twig', [
             'articlesPagination' => $articlesInitPagination,
-            'articleFilter' => $articleFilter
+            'articleFilter' => $articleFilter,
         ]);
 
     }
 
     #[Route('/articles/{slug}', name: 'article')]
     public function show(
-        #[MapEntity(mapping: ['slug' => 'slug'])]
+        #[MapEntity(mapping: [
+            'slug' => 'slug',
+        ])]
         Article $article
     ): Response
     {
         return $this->render('articles/show.html.twig', [
-            'article' => $article
+            'article' => $article,
         ]);
 
     }
-
 }

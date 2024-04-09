@@ -9,11 +9,9 @@ use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Uid\Uuid;
 
-
 #[ORM\Entity(repositoryClass: AdminRepository::class)]
 class Admin implements UserInterface, PasswordAuthenticatedUserInterface
 {
-
     #[ORM\Id]
     #[ORM\GeneratedValue(strategy: 'CUSTOM')]
     #[ORM\Column(type: 'uuid', unique: true)]
@@ -65,7 +63,6 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @return list<string>
      * @see UserInterface
-     *
      */
     public function getRoles(): array
     {
