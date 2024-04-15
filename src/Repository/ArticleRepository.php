@@ -56,10 +56,9 @@ class ArticleRepository extends ServiceEntityRepository
     public function findByFilter(ArticleFilterDto $articleFilterDto, bool $isQuery = false): Query|array
     {
         $qb = $this->createQueryBuilder('article');
-
         $qb->leftJoin('article.tags', 'tag');
 
-        if ($articleFilterDto->getKeyword() !== null && $articleFilterDto->getKeyword() !== '' && $articleFilterDto->getKeyword() !== '0') {
+        if (!empty($articleFilterDto->getKeyword())) {
             $qb->andWhere(
                 $qb->expr()->like($qb->expr()->lower('article.title'), ':keyword')
             )->setParameter('keyword', '%' . strtolower($articleFilterDto->getKeyword()) . '%');
