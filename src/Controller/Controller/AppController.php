@@ -20,6 +20,12 @@ class AppController extends AbstractController
     {
     }
 
+    #[Route('/about-me', name: 'about')]
+    public function about(): Response
+    {
+        return $this->render('app/about-me.html.twig');
+    }
+
     #[Route('/', name: 'landing')]
     public function index(): Response
     {
