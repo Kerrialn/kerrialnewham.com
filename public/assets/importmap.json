@@ -8,12 +8,20 @@
         "type": "js"
     },
     "\/assets\/@symfony\/stimulus-bundle\/controllers.js": {
-        "path": "\/assets\/@symfony\/stimulus-bundle\/controllers-26ecb95187db44ddb59764017043836c.js",
+        "path": "\/assets\/@symfony\/stimulus-bundle\/controllers-407116ba1c9ba4177ac220cda6e18858.js",
         "type": "js"
     },
     "\/assets\/@symfony\/ux-autocomplete\/controller.js": {
         "path": "\/assets\/@symfony\/ux-autocomplete\/controller-d18de807e29352151ef094b16fb98bb5.js",
         "type": "js"
+    },
+    "\/assets\/@symfony\/ux-live-component\/live_controller.js": {
+        "path": "\/assets\/@symfony\/ux-live-component\/live_controller-fd9380642323cc211d12f22a34ea9052.js",
+        "type": "js"
+    },
+    "\/assets\/@symfony\/ux-live-component\/live.min.css": {
+        "path": "\/assets\/@symfony\/ux-live-component\/live.min-5108f988fb2a3dbb292d6feebc9db7e8.css",
+        "type": "css"
     },
     "\/assets\/@symfony\/ux-turbo\/turbo_controller.js": {
         "path": "\/assets\/@symfony\/ux-turbo\/turbo_controller-ce5e32dafdec0b7752f02e3e2cb25751.js",
@@ -77,6 +85,10 @@
     },
     "htmx.org": {
         "path": "\/assets\/vendor\/htmx.org\/htmx.org.index-4fd9299de513c430a437c3611a5351a6.js",
+        "type": "js"
+    },
+    "@symfony\/ux-live-component": {
+        "path": "\/assets\/@symfony\/ux-live-component\/live_controller-fd9380642323cc211d12f22a34ea9052.js",
         "type": "js"
     }
 }
