@@ -57,7 +57,7 @@ class ArticleRepository extends ServiceEntityRepository
 
         $qb = $this->createQueryBuilder('article');
 
-        if (!empty($articleFilterDto->getKeyword())) {
+        if ($articleFilterDto->getKeyword() !== null && $articleFilterDto->getKeyword() !== '' && $articleFilterDto->getKeyword() !== '0') {
             $qb->andWhere(
                 $qb->expr()->like($qb->expr()->lower('article.title'), ':keyword')
             )->setParameter('keyword', '%' . strtolower($articleFilterDto->getKeyword()) . '%');
