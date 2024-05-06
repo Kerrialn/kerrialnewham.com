@@ -15,7 +15,7 @@
                                 {{ form_row(articleFilter.keyword) }}
                             </div>
                             <div class="col-5">
-                                {{ form_row(articleFilter.tags) }}
+                                {{ form_row(articleFilter.tag) }}
                             </div>
                             <div class="col-2 text-end">
                                 <button type="submit" class="btn btn-dark rounded-circle">
@@ -29,7 +29,7 @@
 
 
                 <div class="list-group list-group-flush" id="article-filter-results">
-                    {% for article in articles %}
+                    {% for article in articlesPagination %}
                         <a href="{{ path('article', {slug: article.slug}) }}"
                            class="list-group-item border-0 list-group-item-action mb-3">
                             <div class="fs-5">{{ article.title }}</div>
@@ -40,6 +40,10 @@
                         <div class="text-center text-muted small">nothing found</div>
                     {% endfor %}
                 </div>
+
+                {% if articlesPagination.getTotalItemCount() > articlesPagination.getItemNumberPerPage() %}
+                    {{ knp_pagination_render(articlesPagination, viewParams={align: 'center', size: 'medium'}) }}
+                {% endif %}
 
             </div>
         </div>

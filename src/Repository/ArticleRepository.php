@@ -54,7 +54,6 @@ class ArticleRepository extends ServiceEntityRepository
     public function findByFilter(ArticleFilterDto $articleFilterDto, bool $isQuery = false): Query|array
     {
         $qb = $this->createQueryBuilder('article');
-        $qb->leftJoin('article.tags', 'tag');
 
         if ($articleFilterDto->getKeyword() !== null && $articleFilterDto->getKeyword() !== '' && $articleFilterDto->getKeyword() !== '0') {
             $qb->andWhere(
@@ -66,14 +65,12 @@ class ArticleRepository extends ServiceEntityRepository
             $qb->expr()->isNotNull('article.publishedAt')
         );
 
-        if ($articleFilterDto->getTags()->count() > 0) {
-            $ids = $articleFilterDto->getTags()->map(function (Tag $tag): string {
-                return $tag->getId()->toRfc4122();
-            });
+        if ($articleFilterDto->getTag() instanceof Tag) {
+            $qb->leftJoin('article.tags', 'tag');
 
             $qb->andWhere(
-                $qb->expr()->in('tag.id', ':ids')
-            )->setParameter('ids', $ids->toArray());
+                $qb->expr()->eq('tag.id', ':tag')
+            )->setParameter('tag', $articleFilterDto->getTag());
         }
 
         if ($isQuery) {

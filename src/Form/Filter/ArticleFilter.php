@@ -36,15 +36,15 @@ class ArticleFilter extends AbstractType
                     'class' => 'form-floating',
                 ],
             ])
-            ->add('tags', EntityType::class, [
+            ->add('tag', EntityType::class, [
                 'required' => false,
                 'label' => false,
                 'class' => Tag::class,
-                'multiple' => true,
+                'multiple' => false,
                 'choice_label' => 'content',
                 'autocomplete' => true,
                 'attr' => [
-                    'placeholder' => $this->translator->trans('tags'),
+                    'placeholder' => $this->translator->trans('tag'),
                 ],
                 'row_attr' => [
                     'class' => 'form-floating',

@@ -3,21 +3,12 @@
 namespace App\DataTransferObject;
 
 use App\Entity\Tag;
-use Doctrine\Common\Collections\ArrayCollection;
 
 final class ArticleFilterDto
 {
     private null|string $keyword = null;
 
-    /**
-     * @var ArrayCollection<int,Tag>|null
-     */
-    private ArrayCollection|null $tags;
-
-    public function __construct()
-    {
-        $this->tags = new ArrayCollection();
-    }
+    private Tag|null $tag = null;
 
     public function getKeyword(): ?string
     {
@@ -29,19 +20,13 @@ final class ArticleFilterDto
         $this->keyword = $keyword;
     }
 
-    /**
-     * @return ArrayCollection<int,Tag>
-     */
-    public function getTags(): ArrayCollection
+    public function getTag(): ?Tag
     {
-        return $this->tags;
+        return $this->tag;
     }
 
-    /**
-     * @param ArrayCollection<int,Tag> $tags
-     */
-    public function setTags(ArrayCollection $tags): void
+    public function setTag(?Tag $tag): void
     {
-        $this->tags = $tags;
+        $this->tag = $tag;
     }
 }
