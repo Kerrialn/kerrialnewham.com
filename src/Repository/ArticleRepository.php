@@ -55,8 +55,6 @@ class ArticleRepository extends ServiceEntityRepository
      */
     public function findByFilter(ArticleFilterDto $articleFilterDto, bool $isQuery = false): Query|array
     {
-        dump($articleFilterDto->getTag()->getId());
-
         $qb = $this->createQueryBuilder('article');
 
         if ($articleFilterDto->getKeyword() !== null && $articleFilterDto->getKeyword() !== '' && $articleFilterDto->getKeyword() !== '0') {
