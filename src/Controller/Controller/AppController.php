@@ -68,4 +68,10 @@ class AppController extends AbstractController
             'venturesPagination' => $venturesPagination,
         ]);
     }
+
+    #[Route('/services', name: 'services')]
+    public function services(): Response
+    {
+        return $this->render('app/services.html.twig');
+    }
 }
