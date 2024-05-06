@@ -22,10 +22,10 @@ class Tag
     private ?string $content = null;
 
     /**
-     * @var Collection<int, Article>|ArrayCollection<int, Article>
+     * @var ArrayCollection<int, Article>|Collection<int, Article>
      */
     #[ORM\ManyToMany(targetEntity: Article::class, mappedBy: 'tags')]
-    private Collection $articles;
+    private Collection|ArrayCollection $articles;
 
     public function __construct()
     {

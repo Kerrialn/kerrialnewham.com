@@ -72,7 +72,7 @@ class ArticleRepository extends ServiceEntityRepository
 
             $qb->andWhere(
                 $qb->expr()->eq('tag.id', ':tag')
-            )->setParameter('tag', $articleFilterDto->getTag());
+            )->setParameter('tag', $articleFilterDto->getTag()->getId(), 'uuid');
         }
 
         if ($isQuery) {
