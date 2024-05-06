@@ -29,7 +29,7 @@
 
 
                 <div class="list-group list-group-flush" id="article-filter-results">
-                    {% for article in articlesPagination %}
+                    {% for article in articles %}
                         <a href="{{ path('article', {slug: article.slug}) }}"
                            class="list-group-item border-0 list-group-item-action mb-3">
                             <div class="fs-5">{{ article.title }}</div>
@@ -40,10 +40,6 @@
                         <div class="text-center text-muted small">nothing found</div>
                     {% endfor %}
                 </div>
-
-                {% if articlesPagination.getTotalItemCount() > articlesPagination.getItemNumberPerPage() %}
-                    {{ knp_pagination_render(articlesPagination, viewParams={align: 'center', size: 'medium'}) }}
-                {% endif %}
 
             </div>
         </div>

@@ -9,5 +9,6 @@ return array(
     'contact' => 'contact',
     'page-not-found' => 'hmm, can\'t seem to find that page...',
     'page-error' => 'hmm, something went very wrong...',
-    'general-error' => 'hmm, something isn\'t right...'
+    'general-error' => 'hmm, something isn\'t right...',
+    'pinned-articles' => 'pinned articles'
 );

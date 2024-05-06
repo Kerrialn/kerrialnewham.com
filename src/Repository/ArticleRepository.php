@@ -9,7 +9,6 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Collections\Order;
 use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;
-use Psr\Log\LoggerInterface;
 
 /**
  * @extends ServiceEntityRepository<Article>
@@ -22,7 +21,6 @@ use Psr\Log\LoggerInterface;
 class ArticleRepository extends ServiceEntityRepository
 {
     public function __construct(
-        private readonly LoggerInterface $logger,
         ManagerRegistry $registry
     )
     {
@@ -81,8 +79,6 @@ class ArticleRepository extends ServiceEntityRepository
         if ($isQuery) {
             return $qb->getQuery();
         }
-
-        $this->logger->debug(message: $qb->getQuery()->getResult());
 
         return $qb->getQuery()->getResult();
 
