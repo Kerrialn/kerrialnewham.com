@@ -53,7 +53,7 @@ class ArticleRepository extends ServiceEntityRepository
      */
     public function findByFilter(ArticleFilterDto $articleFilterDto, bool $isQuery = false): Query|array
     {
-        dump($articleFilterDto->getTag()->getId()->toRfc4122());
+        dump($articleFilterDto->getTag()->getId());
 
         $qb = $this->createQueryBuilder('article');
 
