@@ -12,9 +12,14 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{ app.request.get('_route') == 'articles' ? 'active' }}" aria-current="page" href="{{ path('articles') }}">{{ 'blog'|trans|title }}</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {{ app.request.get('_route') == 'services' ? 'active' }}" aria-current="page" href="{{ path('services') }}">{{ 'services'|trans|title }}</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle {{ app.request.get('_route') == 'services' ? 'active' }}" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Services
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{{ path('services', {service: 'migration'}) }}">Updating & Migration </a></li>
+                        <li><a class="dropdown-item" href="{{ path('services', {service: 'training'}) }}">Training Day</a></li>
+                    </ul>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{ app.request.get('_route') == 'about' ? 'active' }}" href="{{ path('about') }}">{{ 'about'|trans|title }}</a>

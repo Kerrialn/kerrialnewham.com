@@ -1,0 +1,99 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8">
+
+                <div>
+                    <div class="list-group list-group-flush mb-5">
+                        <div class="list-group-item border-0 mb-3">
+                            <div class="fs-3 fw-bold mb-3">Migration & Upgrade Services</div>
+
+                            <div class="mb-3">
+                                I offer migration and upgrade services to my clients, this involves
+                                upgrading from a
+                                programming language version and/or upgrading a framework version.
+                                Please check out this <a href="https://tcpx.co.uk/refactor/calculator">Refactor or
+                                    Rebuild Calculator</a> which assists in making an informed business decision about
+                                whether to refactor an existing software application or completely rebuild it, without
+                                in depth technical knowledge.
+                            </div>
+
+                            Let's be honest, migrating is normally an expensive and time-consuming process,
+                            This
+                            is where I can help, I provide a proven and tested approach to migrating &
+                            upgrading
+                            that will save you time and money.
+                        </div>
+                        <div class="list-group-item fs-4 fw-bold">Stage One - Analysis</div>
+                        <img class="img-fluid object-fit-cover" style="height: 200px;width: 100%"
+                             src="{{ asset('images/mircoscope.jpg') }}">
+                        <div class="list-group-item">
+                            I order for us to go anywhere we must first know where we are now, measurable and
+                            evidential. Therefore, I will perform an in depth analysis of your codebase using automated
+                            tools and collate a report of all the areas that need improvement in your application.
+                        </div>
+                        <div class="list-group-item mb-3">
+                            <ul class="mt-3">
+                                <li class="mb-4">We sign a Non-disclosure agreement (NDA)</li>
+                                <li class="mb-4">Automated analysis programs are used to find issue
+                                    in your codebase.
+                                </li>
+                                <li class="mb-4">You receive, for a one-time pre-payment of 5,000 -
+                                    8,000 EUR, a PDF
+                                    report of found issues and a timeline for fixing them.
+                                </li>
+                            </ul>
+                            <div class="text-muted">* Please note you are not locked in, after
+                                receiving the
+                                analysis report, you can decide if you wish to continue with the
+                                next stage.
+                            </div>
+                        </div>
+                        <div class="list-group-item fs-4 fw-bold">Stage Two - Upgrade</div>
+                        <img class="img-fluid object-fit-cover"
+                             style="height: 200px;width: 100%;background-position: bottom"
+                             src="{{ asset('images/upgrade.jpg') }}">
+                        <div class="list-group-item">
+                            If you decide to continue to stage 2, in this stage I will work closely with your dev team to
+                            implement the upgrades outlined in the analysis report. We can start with 4 hours a week and
+                            if you feel like you're getting value then we can increase as per your needs.
+                        </div>
+                        <div class="list-group-item mb-3">
+                            <ul class="mt-3">
+                                <li class="mb-4">I will work in parallel with your team for 10 - 40
+                                    hours per week
+                                    implementing fixes to your codebase.
+                                </li>
+                                <li class="mb-4">I start with the smallest and easiest issues, I
+                                    work on a start one -
+                                    finish one basis, this means I create a change and merge it
+                                    immediately on completion, no stale branches.
+                                </li>
+                                <li class="mb-4">We can schedule once a month meetings to discuss
+                                    progress, blockers and
+                                    adapt strategy if need be.
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="list-group-item fs-4 fw-bold">Cost?</div>
+                        <div class="list-group-item">
+                            <p>
+                                5,000 - 8,000 EUR one-time payment for the analysis report
+                                120 - 150 EUR per hour / invoiced weekly or monthly
+                            </p>
+                            <p>Let's set up a meeting to discuss your project and see if we can work together. </p>
+                        </div>
+                        <div class="list-group-item text-center">
+                            <a href="{{ path('contact') }}" class="btn btn-outline-dark my-3">Contact Now</a>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

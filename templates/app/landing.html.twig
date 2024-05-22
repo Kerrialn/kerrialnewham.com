@@ -30,7 +30,7 @@
                            class="list-group-item border-0 list-group-item-action mb-3">
                             <div class="fs-5">{{ article.title }}</div>
                             <div class="small text-muted">{{ article.content|slice(0,250)|striptags }}</div>
-
+                            <div class="text-end text-muted small">{{ article.createdAt.diffForHumans }}</div>
                         </a>
                     {% endfor %}
                 </div>

@@ -1,0 +1,131 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8">
+
+                <div>
+
+
+                    <div class="list-group list-group-flush mb-5">
+                            <div class="list-group-item fs-3 fw-bold">Training Day</div>
+                        <img class="img-fluid object-fit-cover" style="height: 200px;width: 100%"
+                             src="{{ asset('images/training.jpg') }}">
+                        <div class="list-group-item mb-3">
+                            <p>Need your team to be more aware of code quality and up to date with modern tools that
+                                can improve your teams' productivity?</p>
+                            <p>I offer training days for companies, I will cover such topics as clean code (what it
+                                does and doesn't look like), SOLID, PSRs, PERs, CI, CD, Rector, Easy Coding Standards, Phpstan. </p>
+                            <p>A 5 hour training day cost 1,000 EUR </p>
+                        </div>
+                        <div class="list-group-item">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="fw-bold">Introduction</div>
+                                <div>15 minutes</div>
+                            </div>
+                            <div>
+                                Introduction and agenda overview.
+                            </div>
+                        </div>
+                        <div class="list-group-item">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="fw-bold">Approach</div>
+                                <div>15 minutes</div>
+                            </div>
+                            <div>
+                                How to view and deal with criticism and feedback.
+                            </div>
+                        </div>
+                        <div class="list-group-item">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="fw-bold">Understanding Clean Code</div>
+                                <div>45 minutes</div>
+                            </div>
+                            <div>
+                                What is clean code? Really, what is SOLID? What does and doesn't it look like?
+                            </div>
+                        </div>
+                        <div class="list-group-item">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="fw-bold">Break</div>
+                                <div>10 -15 minutes</div>
+                            </div>
+                            <div>
+                            </div>
+                        </div>
+                        <div class="list-group-item">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="fw-bold">Introduction to Refactoring & Analysis Tools</div>
+                                <div>45 minutes</div>
+                            </div>
+                            <div>
+                                Explanation and demonstration of Rector, Phpstan and Easy Coding Standards.
+                            </div>
+                        </div>
+                        <div class="list-group-item">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="fw-bold">Hands-on Coding Exercises</div>
+                                <div>1 hour</div>
+                            </div>
+                            <div>
+                                Divided into pairs/groups. Coding exercises and refactoring practice.
+                            </div>
+                        </div>
+                        <div class="list-group-item">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="fw-bold">Lunch Break</div>
+                                <div>1 hour</div>
+                            </div>
+                            <div>
+                            </div>
+                        </div>
+                        <div class="list-group-item">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="fw-bold">Best Practices</div>
+                                <div>30 minutes</div>
+                            </div>
+                            <div>
+                                Review of PSRs and common conventions.
+                            </div>
+                        </div>
+                        <div class="list-group-item">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="fw-bold">Advanced Refactoring Techniques</div>
+                                <div>30 minutes</div>
+                            </div>
+                            <div>
+                                Introduction to advanced techniques. Demonstration and discussion.
+                            </div>
+                        </div>
+                        <div class="list-group-item">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="fw-bold">Q&A Session</div>
+                                <div>30 minutes</div>
+                            </div>
+                            <div>
+                                Open floor for questions and discussion.
+                            </div>
+                        </div>
+                        <div class="list-group-item">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="fw-bold">Wrap-up and Conclusion</div>
+                                <div>15 minutes</div>
+                            </div>
+                            <div>
+                                Summary of key points. Resources for further learning. Feedback collection.
+                            </div>
+                        </div>
+                        <div class="list-group-item text-center">
+                            <a href="{{ path('contact') }}" class="btn btn-outline-dark my-3">Contact Now</a>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

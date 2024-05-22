@@ -2,19 +2,22 @@
 
 namespace App\Controller\Controller;
 
+use App\Enum\ServiceEnum;
 use App\Model\Quote;
 use App\Repository\ArticleRepository;
 use App\Repository\VentureRepository;
+use InvalidArgumentException;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class AppController extends AbstractController
 {
     public function __construct(
-        private readonly ArticleRepository $articleRepository,
-        private readonly VentureRepository $ventureRepository,
+        private readonly ArticleRepository  $articleRepository,
+        private readonly VentureRepository  $ventureRepository,
         private readonly PaginatorInterface $paginator,
     )
     {
@@ -71,8 +74,15 @@ class AppController extends AbstractController
     }
 
     #[Route('/services', name: 'services')]
-    public function services(): Response
+    public function services(Request $request): Response
     {
-        return $this->render('app/services.html.twig');
+        $service = ServiceEnum::tryFrom($request->get('service'));
+
+        return match ($service) {
+            ServiceEnum::MIGRATION => $this->render('service/migration.html.twig'),
+            ServiceEnum::TRAINING => $this->render('service/training.html.twig'),
+            default => throw new InvalidArgumentException('please select a valid service')
+        };
+
     }
 }
