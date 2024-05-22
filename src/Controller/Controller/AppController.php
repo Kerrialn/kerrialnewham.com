@@ -16,8 +16,8 @@ use Symfony\Component\Routing\Annotation\Route;
 class AppController extends AbstractController
 {
     public function __construct(
-        private readonly ArticleRepository  $articleRepository,
-        private readonly VentureRepository  $ventureRepository,
+        private readonly ArticleRepository $articleRepository,
+        private readonly VentureRepository $ventureRepository,
         private readonly PaginatorInterface $paginator,
     )
     {

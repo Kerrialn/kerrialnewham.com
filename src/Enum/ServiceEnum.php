@@ -2,7 +2,7 @@
 
 namespace App\Enum;
 
-enum ServiceEnum : string
+enum ServiceEnum: string
 {
     case MIGRATION = 'migration';
     case TRAINING = 'training';
