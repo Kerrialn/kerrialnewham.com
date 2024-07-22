@@ -58,4 +58,7 @@ return [
     'htmx.org' => [
         'version' => '1.9.11',
     ],
+    'animejs' => [
+        'version' => '3.2.2',
+    ],
 ];

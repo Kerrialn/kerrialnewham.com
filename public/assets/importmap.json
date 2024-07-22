@@ -1,6 +1,6 @@
 {
     "app": {
-        "path": "\/assets\/app-3a6f95f4b5b8f3a0f94ed8f2e0cef092.js",
+        "path": "\/assets\/app-daa54e0d5a7579c54d456abd9fa7b54c.js",
         "type": "js"
     },
     "\/assets\/bootstrap.js": {
@@ -8,7 +8,7 @@
         "type": "js"
     },
     "\/assets\/@symfony\/stimulus-bundle\/controllers.js": {
-        "path": "\/assets\/@symfony\/stimulus-bundle\/controllers-26ecb95187db44ddb59764017043836c.js",
+        "path": "\/assets\/@symfony\/stimulus-bundle\/controllers-59a643eeda0ef445132dc7ac488e7a14.js",
         "type": "js"
     },
     "\/assets\/@symfony\/ux-autocomplete\/controller.js": {
@@ -23,8 +23,12 @@
         "path": "\/assets\/controllers\/hello_controller-55882fcad241d2bea50276ea485583bc.js",
         "type": "js"
     },
+    "\/assets\/controllers\/morph_controller.js": {
+        "path": "\/assets\/controllers\/morph_controller-cffeb583a30c60357697d66d30e35c23.js",
+        "type": "js"
+    },
     "\/assets\/styles\/app.css": {
-        "path": "\/assets\/styles\/app-922193caaa52afc099071e601ad47074.css",
+        "path": "\/assets\/styles\/app-8ba4f587cdd94ad625aacb815ba3e659.css",
         "type": "css"
     },
     "@hotwired\/stimulus": {
@@ -77,6 +81,10 @@
     },
     "htmx.org": {
         "path": "\/assets\/vendor\/htmx.org\/htmx.org.index-4fd9299de513c430a437c3611a5351a6.js",
+        "type": "js"
+    },
+    "animejs": {
+        "path": "\/assets\/vendor\/animejs\/animejs.index-10e3a7dae537ade2f98e027d3aa90929.js",
         "type": "js"
     }
 }

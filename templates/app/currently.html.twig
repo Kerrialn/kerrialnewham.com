@@ -11,7 +11,7 @@
                         {% for venture in venturesPagination %}
 
                             {% if venture.url is null %}
-                                <div class="list-group-item mb-3 border-0">
+                                <div class="list-group-item rounded mb-3 border-0">
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="fs-5">{{ venture.title }}</div>
                                         <div class="badge rounded-pill text-bg-dark">{{ venture.status.value|upper }}</div>
@@ -23,7 +23,7 @@
                                 </div>
                             {% else %}
                                 <a href="{{ absolute_url(venture.url) }}"
-                                   class="list-group-item list-group-item-action mb-3 border-0">
+                                   class="list-group-item rounded list-group-item-action mb-3 border-0">
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="fs-5">{{ venture.title }}</div>
                                         <div class="badge rounded-pill text-bg-dark">{{ venture.status.value|upper }}</div>
