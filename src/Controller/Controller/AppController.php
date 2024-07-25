@@ -20,10 +20,10 @@ use Symfony\Component\Routing\Annotation\Route;
 class AppController extends AbstractController
 {
     public function __construct(
-        private readonly ArticleRepository  $articleRepository,
-        private readonly VentureRepository  $ventureRepository,
+        private readonly ArticleRepository $articleRepository,
+        private readonly VentureRepository $ventureRepository,
         private readonly PaginatorInterface $paginator,
-        private readonly EmailRepository    $emailRepository,
+        private readonly EmailRepository $emailRepository,
     )
     {
     }
@@ -58,7 +58,7 @@ class AppController extends AbstractController
         if ($emailForm->isSubmitted() && $emailForm->isValid()) {
 
             $emailCheck = $this->emailRepository->findOneBy([
-                'address' => $email->getAddress()
+                'address' => $email->getAddress(),
             ]);
 
             if ($emailCheck instanceof Email) {
@@ -74,7 +74,7 @@ class AppController extends AbstractController
         return $this->render('app/landing.html.twig', [
             'quote' => $quotes[array_rand($quotes)],
             'articles' => $articles,
-            'emailForm' => $emailForm
+            'emailForm' => $emailForm,
         ]);
     }
 
