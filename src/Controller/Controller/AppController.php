@@ -2,9 +2,13 @@
 
 namespace App\Controller\Controller;
 
+use App\Entity\Email;
+use App\Enum\FlashEnum;
 use App\Enum\ServiceEnum;
+use App\Form\Form\MailListFormType;
 use App\Model\Quote;
 use App\Repository\ArticleRepository;
+use App\Repository\EmailRepository;
 use App\Repository\VentureRepository;
 use InvalidArgumentException;
 use Knp\Component\Pager\PaginatorInterface;
@@ -16,9 +20,10 @@ use Symfony\Component\Routing\Annotation\Route;
 class AppController extends AbstractController
 {
     public function __construct(
-        private readonly ArticleRepository $articleRepository,
-        private readonly VentureRepository $ventureRepository,
+        private readonly ArticleRepository  $articleRepository,
+        private readonly VentureRepository  $ventureRepository,
         private readonly PaginatorInterface $paginator,
+        private readonly EmailRepository    $emailRepository,
     )
     {
     }
@@ -30,7 +35,7 @@ class AppController extends AbstractController
     }
 
     #[Route('/', name: 'landing')]
-    public function index(): Response
+    public function index(Request $request): Response
     {
         $articles = $this->articleRepository->findRecentlyPublished();
 
@@ -46,9 +51,30 @@ class AppController extends AbstractController
             new Quote(quote: 'I have a foreboding of an America in my children\'s or grandchildren\'s time -- when the United States is a service and information economy; when nearly all the manufacturing industries have slipped away to other countries; when awesome technological powers are in the hands of a very few, and no one representing the public interest can even grasp the issues; when the people have lost the ability to set their own agendas or knowledgeably question those in authority; when, clutching our crystals and nervously consulting our horoscopes, our critical faculties in decline, unable to distinguish between what feels good and what\'s true, we slide, almost without noticing, back into superstition and darkness... The dumbing down of American is most evident in the slow decay of substantive content in the enormously influential media, the 30 second sound bites (now down to 10 seconds or less), lowest common denominator programming, credulous presentations on pseudoscience and superstition, but especially a kind of celebration of ignorance', author: 'Carl Sagan'),
         ];
 
+        $email = new Email();
+        $emailForm = $this->createForm(MailListFormType::class, $email);
+
+        $emailForm->handleRequest($request);
+        if ($emailForm->isSubmitted() && $emailForm->isValid()) {
+
+            $emailCheck = $this->emailRepository->findOneBy([
+                'address' => $email->getAddress()
+            ]);
+
+            if ($emailCheck instanceof Email) {
+                $this->addFlash(FlashEnum::MESSAGE->value, 'That E-mail address is already in our mailing list');
+                return $this->redirectToRoute('landing');
+            } else {
+                $this->emailRepository->save(entity: $email, flush: true);
+                $this->addFlash(FlashEnum::MESSAGE->value, 'successfully added to the mailing list');
+                return $this->redirectToRoute('landing');
+            }
+        }
+
         return $this->render('app/landing.html.twig', [
             'quote' => $quotes[array_rand($quotes)],
             'articles' => $articles,
+            'emailForm' => $emailForm
         ]);
     }
 
