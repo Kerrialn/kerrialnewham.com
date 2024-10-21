@@ -30,7 +30,10 @@
                         <a href="{{ path('article', {slug: article.slug}) }}"
                            class="list-group-item border-0 rounded list-group-item-action mb-3">
                             <div class="fs-5">{{ article.title }}</div>
-                            <div class="small text-muted">{{ article.content|slice(0,250)|striptags }}</div>
+                            {% set content = article.content|striptags %}
+                            <div class="small text-muted">
+                                {{ content|u.truncate(250, '...') }}
+                            </div>
                             <div class="text-end text-muted small">{{ article.createdAt.diffForHumans }}</div>
                         </a>
                     {% endfor %}

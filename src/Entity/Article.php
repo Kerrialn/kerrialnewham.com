@@ -44,7 +44,7 @@ class Article
     #[ORM\ManyToMany(targetEntity: Tag::class, inversedBy: 'articles')]
     private Collection $tags;
 
-    public function __construct()
+   public function __construct()
     {
         $this->createdAt = new CarbonImmutable();
         $this->tags = new ArrayCollection();
@@ -69,7 +69,7 @@ class Article
 
     public function getContent(): ?string
     {
-        return $this->content;
+        return html_entity_decode($this->content);
     }
 
     public function setContent(string $content): static

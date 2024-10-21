@@ -10,6 +10,7 @@ use Doctrine\Common\Collections\Order;
 use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;
 use Psr\Log\LoggerInterface;
+use Symfony\Component\Uid\Uuid;
 
 /**
  * @extends ServiceEntityRepository<Article>
@@ -83,5 +84,21 @@ class ArticleRepository extends ServiceEntityRepository
 
         return $qb->getQuery()->getResult();
 
+    }
+
+    /**
+     * @return array<int, Article>
+     */
+    public function findOtherArticles(Uuid $id): array
+    {
+        $qb = $this->createQueryBuilder(alias: 'article');
+
+        $qb->andWhere($qb->expr()->neq(x: 'article.id', y: ':id'))
+            ->setParameter(key: 'id', value: $id, type: 'uuid');
+
+        $qb->setMaxResults(maxResults: 3);
+        $qb->orderBy(sort: 'article.publishedAt', order: Order::Descending->value);
+
+        return $qb->getQuery()->getResult();
     }
 }

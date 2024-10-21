@@ -65,8 +65,11 @@ class ArticleController extends AbstractController
         Article $article
     ): Response
     {
+        $moreArticles = $this->articleRepository->findOtherArticles($article->getId());
+
         return $this->render('articles/show.html.twig', [
             'article' => $article,
+            'moreArticles' => $moreArticles,
         ]);
 
     }
