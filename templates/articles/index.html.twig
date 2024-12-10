@@ -43,9 +43,11 @@
                     {% endfor %}
                 </div>
 
-                {% if articlesPagination.getTotalItemCount() > articlesPagination.getItemNumberPerPage() %}
-                    {{ knp_pagination_render(articlesPagination, viewParams={align: 'center', size: 'medium'}) }}
-                {% endif %}
+                <div class="d-flex justify-content-center my-5">
+                    {% if articlesPagination.getTotalItemCount() > articlesPagination.getItemNumberPerPage() %}
+                        {{ knp_pagination_render(articlesPagination) }}
+                    {% endif %}
+                </div>
 
             </div>
         </div>

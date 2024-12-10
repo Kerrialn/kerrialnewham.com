@@ -31,6 +31,7 @@ class ArticleController extends AbstractController
         $articlesQuery = $this->articleRepository->findRecentlyPublished(isQuery: true);
         $articlesInitPagination = $this->paginator->paginate(
             target: $articlesQuery,
+            page: $request->query->getInt('page', 1),
             limit: 20
         );
 

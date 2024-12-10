@@ -1,56 +1,46 @@
 {% if pageCount > 1 %}
-    <nav>
-        {% set classAlign = (align is not defined) ? '' : align=='center' ? ' justify-content-center' : (align=='right' ? ' justify-content-end' : '') %}
-        {% set classSize = (size is not defined) ? '' : size=='large' ? ' pagination-lg' : (size=='small' ? ' pagination-sm' : '') %}
-        <div class="btn-group mb-0{{ classAlign }}{{ classSize }}" role="group" aria-label="Pagination">
+    <nav class="text-center my-3">
+        {% set classAlign = (align is not defined) ? '' : align == 'center' ? ' justify-content-center' : (align == 'right' ? ' justify-content-end' : '') %}
+        {% set classSize = (size is not defined) ? '' : size == 'large' ? ' list-group-lg' : (size == 'small' ? ' list-group-sm' : '') %}
+        <div class="list-group d-inline-flex mx-auto list-group-horizontal">
 
+            {# Previous button #}
             {% if previous is defined %}
-                <a href="{{ path(route, query|merge({(pageParameterName): previous})) }}" class="btn btn-secondary" role="button" aria-label="Previous">
+                <a class="list-group-item list-group-item-action" rel="prev" href="{{ path(route, query|merge({(pageParameterName): previous})) }}">
                     <i class="bi bi-chevron-left"></i>
                 </a>
             {% else %}
-                <button type="button" class="btn btn-secondary disabled" aria-disabled="true">
+                <a class="list-group-item list-group-item-action disabled">
                     <i class="bi bi-chevron-left"></i>
-                </button>
+                </a>
             {% endif %}
 
-            {% if startPage > 1 %}
-                <a href="{{ path(route, query|merge({(pageParameterName): 1})) }}" class="btn btn-secondary" role="button">1</a>
-                {% if startPage == 3 %}
-                    <a href="{{ path(route, query|merge({(pageParameterName): 2})) }}" class="btn btn-secondary" role="button">2</a>
-                {% elseif startPage != 2 %}
-                    <button type="button" class="btn btn-secondary disabled" aria-disabled="true">&hellip;</button>
-                {% endif %}
+            {# Always show the first page #}
+            <a class="list-group-item list-group-item-action" href="{{ path(route, query|merge({(pageParameterName): 1})) }}">1</a>
+
+            {# Show current page if it's not the first or last page #}
+            {% if current > 1 and current < pageCount %}
+                <a class="list-group-item list-group-item-action disabled">&hellip;</a>
+                <a class="list-group-item list-group-item-action active">{{ current }}</a>
             {% endif %}
 
-            {% for page in pagesInRange %}
-                {% if page != current %}
-                    <a href="{{ path(route, query|merge({(pageParameterName): page})) }}" class="btn btn-secondary" role="button">{{ page }}</a>
-                {% else %}
-                    <button type="button" class="btn btn-secondary active" aria-current="page">{{ page }}</button>
-                {% endif %}
-            {% endfor %}
-
-            {% if pageCount > endPage %}
-                {% if pageCount > (endPage + 1) %}
-                    {% if pageCount > (endPage + 2) %}
-                        <button type="button" class="btn btn-secondary disabled" aria-disabled="true">&hellip;</button>
-                    {% else %}
-                        <a href="{{ path(route, query|merge({(pageParameterName): (pageCount - 1)})) }}" class="btn btn-secondary" role="button">{{ pageCount -1 }}</a>
-                    {% endif %}
-                {% endif %}
-                <a href="{{ path(route, query|merge({(pageParameterName): pageCount})) }}" class="btn btn-secondary" role="button">{{ pageCount }}</a>
+            {# Show last page #}
+            {% if current < pageCount - 1 %}
+                <a class="list-group-item list-group-item-action disabled">&hellip;</a>
             {% endif %}
+            <a class="list-group-item list-group-item-action" href="{{ path(route, query|merge({(pageParameterName): pageCount})) }}">{{ pageCount }}</a>
 
+            {# Next button #}
             {% if next is defined %}
-                <a href="{{ path(route, query|merge({(pageParameterName): next})) }}" class="btn btn-secondary" role="button" aria-label="Next">
+                <a class="list-group-item list-group-item-action" rel="next" href="{{ path(route, query|merge({(pageParameterName): next})) }}">
                     <i class="bi bi-chevron-right"></i>
                 </a>
             {% else %}
-                <button type="button" class="btn btn-secondary disabled" aria-disabled="true">
+                <a class="list-group-item list-group-item-action disabled">
                     <i class="bi bi-chevron-right"></i>
-                </button>
+                </a>
             {% endif %}
+
         </div>
     </nav>
 {% endif %}
