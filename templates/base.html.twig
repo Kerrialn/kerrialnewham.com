@@ -28,6 +28,7 @@
                 crossorigin="anonymous"></script>
         {% block importmap %}{{ importmap('app') }}{% endblock %}
 
+        {% if app.environment == 'prod' %}
         <!-- Google tag (gtag.js) -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-D1ECWLQDQ1"></script>
         <script>
@@ -41,6 +42,7 @@
 
             gtag('config', 'G-D1ECWLQDQ1');
         </script>
+        {% endif %}
     {% endblock %}
 </head>
 <body>
@@ -54,6 +56,27 @@
 {% endfor %}
 
 {{ include('partial/_navbar.html.twig') }}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-6">
+            <div class="card mb-5 bg-light border-info" role="alert">
+                <div class="card-body">
+                    <h4 class="alert-heading">Migration Services</h4>
+                    <hr class="m-1"/>
+                    <p>Need to migrate your PHP legacy system to a new framework quickly and without breaking the bank?
+                        Get in touch—I'd be happy to help.</p>
+                    <div class="text-end">
+                        <a href="{{ path('contact') }}" class="btn btn-outline-dark rounded-pill">
+                            contact me now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="z-1">
     {% block body %}{% endblock %}
 </div>
