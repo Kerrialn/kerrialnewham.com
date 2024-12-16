@@ -31,10 +31,11 @@ class Article
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $description = null;
+
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $tagline = null;
 
-    #[ORM\Column(type: Types::DATETIME_IMMUTABLE,)]
+    #[ORM\Column(type: Types::DATETIME_IMMUTABLE, )]
     private CarbonImmutable|null $createdAt = null;
 
     #[ORM\Column(type: Types::DATETIME_IMMUTABLE, nullable: true)]
@@ -130,7 +131,7 @@ class Article
 
     public function addTag(Tag $tag): static
     {
-        if (!$this->tags->contains($tag)) {
+        if (! $this->tags->contains($tag)) {
             $this->tags->add($tag);
         }
 
@@ -173,5 +174,4 @@ class Article
     {
         $this->tagline = $tagline;
     }
-
 }
