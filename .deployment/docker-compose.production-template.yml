@@ -40,8 +40,8 @@ services:
     restart: unless-stopped
     environment:
       SERVER_NAME: ":80"
-      MERCURE_PUBLISHER_JWT_KEY: "__PINBOARDABLE_MERCURE_JWT_SECRET__"
-      MERCURE_SUBSCRIBER_JWT_KEY: "__PINBOARDABLE_MERCURE_JWT_SECRET__"
+      MERCURE_PUBLISHER_JWT_KEY: "__MERCURE_JWT_SECRET__"
+      MERCURE_SUBSCRIBER_JWT_KEY: "__MERCURE_JWT_SECRET__"
     volumes:
       - php_socket:/var/run/php
       - caddy_data:/data
@@ -61,10 +61,6 @@ services:
   database:
     image: postgres:13
     restart: unless-stopped
-    environment:
-      POSTGRES_DB: "__PINBOARDABLE_POSTGRES_DBNAME__"
-      POSTGRES_PASSWORD: "__PINBOARDABLE_POSTGRES_PASSWORD__"
-      POSTGRES_USER: "__PINBOARDABLE_POSTGRES_USER__"
     volumes:
       - ./db-data:/var/lib/postgresql/data:rw
     networks:
