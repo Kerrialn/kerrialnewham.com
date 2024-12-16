@@ -4,7 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}Kerrial Newham{% endblock %}</title>
-    <link rel="icon" href="{{ asset('images/kn.ico') }}">
+    <link rel="icon" href="{{ asset('images/kn.ico') }}" />
+    {% block metatags %}
+        <meta name="description" content="PHP Legacy migration specialist, migrate safely without breaking the bank." />
+        <meta property="og:image" content="{{ asset('images/kn.ico') }}" />
+        <meta property="og:title" content="Kerrial Newham - PHP Migration Specialist" />
+        <meta property="og:description" content="PHP Legacy migration specialist, migrate safely without breaking the bank." />
+    {% endblock %}
+
     {% block stylesheets %}
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
               integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"

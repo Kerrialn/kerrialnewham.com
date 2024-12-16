@@ -29,7 +29,12 @@ class Article
     #[ORM\Column(type: Types::TEXT)]
     private ?string $content = null;
 
-    #[ORM\Column(type: Types::DATETIME_IMMUTABLE, )]
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $description = null;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $tagline = null;
+
+    #[ORM\Column(type: Types::DATETIME_IMMUTABLE,)]
     private CarbonImmutable|null $createdAt = null;
 
     #[ORM\Column(type: Types::DATETIME_IMMUTABLE, nullable: true)]
@@ -44,7 +49,7 @@ class Article
     #[ORM\ManyToMany(targetEntity: Tag::class, inversedBy: 'articles')]
     private Collection $tags;
 
-   public function __construct()
+    public function __construct()
     {
         $this->createdAt = new CarbonImmutable();
         $this->tags = new ArrayCollection();
@@ -125,7 +130,7 @@ class Article
 
     public function addTag(Tag $tag): static
     {
-        if (! $this->tags->contains($tag)) {
+        if (!$this->tags->contains($tag)) {
             $this->tags->add($tag);
         }
 
@@ -148,4 +153,25 @@ class Article
     {
         $this->slug = $slug;
     }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): void
+    {
+        $this->description = $description;
+    }
+
+    public function getTagline(): ?string
+    {
+        return $this->tagline;
+    }
+
+    public function setTagline(?string $tagline): void
+    {
+        $this->tagline = $tagline;
+    }
+
 }
