@@ -26,7 +26,7 @@ services:
     environment:
       MERCURE_PUBLIC_URL: "https://kerrialnewham.com/.well-known/mercure"
       APP_ENV: "prod"
-      DATABASE_URL: "__DEPLOY_HOST__"
+      DATABASE_URL: "__DATABASE_URL__"
       APP_SECRET: "__APP_SECRET__"
       MAILER_DSN: "__MAILER_DSN__"
       MESSENGER_TRANSPORT_DSN: "__MESSENGER_TRANSPORT_DSN__"
