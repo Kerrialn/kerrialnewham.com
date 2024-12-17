@@ -26,7 +26,7 @@ services:
     environment:
       MERCURE_PUBLIC_URL: "https://kerrialnewham.com/.well-known/mercure"
       APP_ENV: "prod"
-      DATABASE_URL: "__DATABASE_URL__"
+      DATABASE_URL: "postgresql://__POSTGRES_USER__:__POSTGRES_PASSWORD__@__POSTGRES_HOST__:5432/__POSTGRES_DBNAME__?serverVersion=17&charset=utf8"
       APP_SECRET: "__APP_SECRET__"
       MAILER_DSN: "__MAILER_DSN__"
       MESSENGER_TRANSPORT_DSN: "__MESSENGER_TRANSPORT_DSN__"
