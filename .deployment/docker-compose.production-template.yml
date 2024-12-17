@@ -39,7 +39,7 @@ services:
       - php
     restart: unless-stopped
     environment:
-      SERVER_NAME: ":80"
+      SERVER_NAME: "kerrialnewham.com www.kerrialnewham.com"
       MERCURE_PUBLISHER_JWT_KEY: "__MERCURE_JWT_SECRET__"
       MERCURE_SUBSCRIBER_JWT_KEY: "__MERCURE_JWT_SECRET__"
     volumes:
