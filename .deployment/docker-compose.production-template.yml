@@ -49,6 +49,7 @@ services:
       - ./Caddyfile:/etc/caddy/Caddyfile
     expose:
       - "80"
+      - "443"
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.kerrialnewham.rule=Host(`kerrialnewham.com`, `www.kerrialnewham.com`)"
