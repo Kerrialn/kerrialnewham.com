@@ -84,7 +84,7 @@ jobs:
       - docker
     environment:
       name: prod
-      url: https://pinbaordable.com
+      url: https://kerrialnewham.com
     steps:
       - name: Checkout
         uses: actions/checkout@v4
