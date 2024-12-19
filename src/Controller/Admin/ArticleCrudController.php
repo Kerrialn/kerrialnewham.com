@@ -31,7 +31,7 @@ class ArticleCrudController extends AbstractCrudController
             TextEditorField::new('content')->setFormTypeOptions([
                 'block_name' => 'field_code_editor_widget',
             ]),
-            DateField::new('publishedAt'),
+            DateField::new('publishedAt')->onlyOnIndex(),
             DateField::new('createdAt')->onlyOnIndex(),
         ];
     }
