@@ -32,7 +32,7 @@ class ArticleCrudController extends AbstractCrudController
                 'block_name' => 'field_code_editor_widget',
             ]),
             DateField::new('publishedAt'),
-            DateField::new('createdAt'),
+            DateField::new('createdAt')->onlyOnIndex(),
         ];
     }
 }
