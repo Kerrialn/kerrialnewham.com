@@ -26,10 +26,10 @@ services:
     environment:
       MERCURE_PUBLIC_URL: "https://kerrialnewham.com/.well-known/mercure"
       APP_ENV: "prod"
-      DATABASE_URL: "postgresql://__POSTGRES_USER__:__POSTGRES_PASSWORD__@__POSTGRES_HOST__:__POSTGRES_PORT__/__POSTGRES_DBNAME__?sslmode=require"
-      APP_SECRET: "__APP_SECRET__"
-      MAILER_DSN: "__MAILER_DSN__"
-      MESSENGER_TRANSPORT_DSN: "__MESSENGER_TRANSPORT_DSN__"
+      DATABASE_URL: "postgresql://__KERRIALNEWHAM_POSTGRES_USER__:__KERRIALNEWHAM_POSTGRES_PASSWORD__@__KERRIALNEWHAM_POSTGRES_HOST__:__KERRIALNEWHAM_POSTGRES_PORT__/__KERRIALNEWHAM_POSTGRES_DBNAME__?sslmode=require"
+      APP_SECRET: "__KERRIALNEWHAM_APP_SECRET__"
+      MAILER_DSN: "__KERRIALNEWHAM_MAILER_DSN__"
+      MESSENGER_TRANSPORT_DSN: "__KERRIALNEWHAM_MESSENGER_TRANSPORT_DSN__"
     networks:
       - internal
 
@@ -40,8 +40,8 @@ services:
     restart: unless-stopped
     environment:
       SERVER_NAME: ":80"
-      MERCURE_PUBLISHER_JWT_KEY: "__MERCURE_JWT_SECRET__"
-      MERCURE_SUBSCRIBER_JWT_KEY: "__MERCURE_JWT_SECRET__"
+      MERCURE_PUBLISHER_JWT_KEY: "__KERRIALNEWHAM_MERCURE_JWT_SECRET__"
+      MERCURE_SUBSCRIBER_JWT_KEY: "__KERRIALNEWHAM_MERCURE_JWT_SECRET__"
     volumes:
       - php_socket:/var/run/php
       - caddy_data:/data
