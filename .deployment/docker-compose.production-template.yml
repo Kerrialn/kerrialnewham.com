@@ -20,8 +20,6 @@ services:
       timeout: 3s
       retries: 3
       start_period: 30s
-    depends_on:
-      - database
     restart: unless-stopped
     environment:
       MERCURE_PUBLIC_URL: "https://kerrialnewham.com/.well-known/mercure"
@@ -58,27 +56,3 @@ services:
     networks:
       - traefik
       - internal
-
-  database:
-    image: postgres:13
-    restart: unless-stopped
-    volumes:
-      - ./db-data:/var/lib/postgresql/data:rw
-    networks:
-      - internal
-
-  adminer:
-    image: adminer:4.8.0
-    restart: unless-stopped
-    environment:
-      ADMINER_DEFAULT_SERVER: database
-    expose:
-      - "8080"
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.kerrialnewham-adminer.rule=Host(`adminer.kerrialnewham.com`)"
-      - "traefik.http.routers.kerrialnewham-adminer.tls=true"
-      - "traefik.http.routers.kerrialnewham-adminer.tls.certresolver=le"
-    networks:
-      - internal
-      - traefik
