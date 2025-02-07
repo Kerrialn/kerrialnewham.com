@@ -56,6 +56,16 @@
 
 <div data-controller="scroll-progress" class="h-2 bg-grey position-fixed top-0 z-3"></div>
 
+<div {{ stimulus_controller('blobs') }} class="blobs-container">
+    <svg id="blobs-svg" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+        <circle {{  stimulus_target('blobs', 'blob') }} class="blob" cx="100" cy="100" r="20" fill="#FF6F61"></circle>
+        <circle {{  stimulus_target('blobs', 'blob') }} class="blob" cx="200" cy="300" r="25" fill="#6A4C93"></circle>
+        <circle {{  stimulus_target('blobs', 'blob') }} class="blob" cx="400" cy="150" r="30" fill="#F4A261"></circle>
+        <circle {{  stimulus_target('blobs', 'blob') }} class="blob" cx="600" cy="400" r="15" fill="#2A9D8F"></circle>
+        <circle {{  stimulus_target('blobs', 'blob') }} class="blob" cx="700" cy="100" r="35" fill="#E76F51"></circle>
+    </svg>
+</div>
+
 {% for message in app.flashes('message') %}
     <div class="text-bg-dark py-3 text-center" role="alert">
         {{ message }}

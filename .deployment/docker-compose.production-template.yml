@@ -50,7 +50,7 @@ services:
       - "443"
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.kerrialnewham.rule=Host(`kerrialnewham.com`, `www.kerrialnewham.com`)"
+      - "traefik.http.routers.kerrialnewham.rule=Host(`kerrialnewham.com`)"
       - "traefik.http.routers.kerrialnewham.tls=true"
       - "traefik.http.routers.kerrialnewham.tls.certresolver=le"
     networks:

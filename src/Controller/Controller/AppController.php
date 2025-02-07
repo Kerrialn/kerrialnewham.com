@@ -98,17 +98,4 @@ class AppController extends AbstractController
             'venturesPagination' => $venturesPagination,
         ]);
     }
-
-    #[Route('/services', name: 'services')]
-    public function services(Request $request): Response
-    {
-        $service = ServiceEnum::tryFrom($request->get('service'));
-
-        return match ($service) {
-            ServiceEnum::MIGRATION => $this->render('service/migration.html.twig'),
-            ServiceEnum::TRAINING => $this->render('service/training.html.twig'),
-            default => throw new InvalidArgumentException('please select a valid service')
-        };
-
-    }
 }
