@@ -4,13 +4,11 @@ namespace App\Controller\Controller;
 
 use App\Entity\Email;
 use App\Enum\FlashEnum;
-use App\Enum\ServiceEnum;
 use App\Form\Form\MailListFormType;
 use App\Model\Quote;
 use App\Repository\ArticleRepository;
 use App\Repository\EmailRepository;
 use App\Repository\VentureRepository;
-use InvalidArgumentException;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
