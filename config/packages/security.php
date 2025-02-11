@@ -40,7 +40,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         'access_control' => [
             [
                 'path' => '/admin',
-                'roles' => ['admin']
+                'roles' => ['admin'],
             ],
         ],
     ]);
