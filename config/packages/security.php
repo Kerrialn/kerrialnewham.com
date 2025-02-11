@@ -38,10 +38,10 @@ return static function (ContainerConfigurator $containerConfigurator): void {
             ],
         ],
         'access_control' => [
-//            [
-//                'path' => '/admin',
-//                'roles' => ['admin']
-//            ],
+            //            [
+            //                'path' => '/admin',
+            //                'roles' => ['admin']
+            //            ],
         ],
     ]);
     if ($containerConfigurator->env() === 'test') {
