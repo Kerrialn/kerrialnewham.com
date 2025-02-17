@@ -3,6 +3,8 @@
 declare(strict_types=1);
 
 use App\Entity\Admin;
+use App\Enum\RoleEnum;
+use App\Security\CustomAuthenticator;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 
@@ -15,7 +17,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
             'app_admin_provider' => [
                 'entity' => [
                     'class' => Admin::class,
-                    'property' => 'email',
+                    'property' => 'email'
                 ],
             ],
         ],
@@ -27,6 +29,8 @@ return static function (ContainerConfigurator $containerConfigurator): void {
             'main' => [
                 'lazy' => true,
                 'provider' => 'app_admin_provider',
+                'custom_authenticators' => [CustomAuthenticator::class],
+                'entry_point' => CustomAuthenticator::class,
                 'form_login' => [
                     'login_path' => 'app_login',
                     'check_path' => 'app_login',
@@ -40,7 +44,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         'access_control' => [
             [
                 'path' => '/admin',
-                'roles' => ['admin'],
+                'roles' => [RoleEnum::ADMIN->value],
             ],
         ],
     ]);

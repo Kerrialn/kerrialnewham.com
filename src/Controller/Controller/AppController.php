@@ -9,11 +9,13 @@ use App\Model\Quote;
 use App\Repository\ArticleRepository;
 use App\Repository\EmailRepository;
 use App\Repository\VentureRepository;
+use Doctrine\Common\Collections\Order;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class AppController extends AbstractController
 {
@@ -95,5 +97,25 @@ class AppController extends AbstractController
         return $this->render('app/currently.html.twig', [
             'venturesPagination' => $venturesPagination,
         ]);
+    }
+
+    #[Route('/sitemap.xml', name: 'sitemap', defaults: ['_format' => 'xml'])]
+    public function sitemap(): Response
+    {
+        $articles = $this->articleRepository->findBy(criteria: [], orderBy: ['createdAt' => Order::Descending->value], limit: 30);
+        $articleUrls = [];
+
+        foreach ($articles as $article) {
+            $articleUrls[] = [
+                'loc' => $this->generateUrl(route: 'article', parameters: ['slug' => $article->getSlug()], referenceType: UrlGeneratorInterface::ABSOLUTE_URL),
+                'lastmod' => $article->getUpdatedAt()->toIso8601String(),
+                'changefreq' => 'weekly',
+                'priority' => '0.5'
+            ];
+        }
+
+        return $this->render('app/sitemap.xml.twig', [
+            'articleUrls' => $articleUrls
+        ])->setSharedMaxAge(3600);
     }
 }
