@@ -9,6 +9,7 @@ use App\Model\Quote;
 use App\Repository\ArticleRepository;
 use App\Repository\EmailRepository;
 use App\Repository\VentureRepository;
+use Carbon\CarbonImmutable;
 use Doctrine\Common\Collections\Order;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -20,10 +21,10 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 class AppController extends AbstractController
 {
     public function __construct(
-        private readonly ArticleRepository $articleRepository,
-        private readonly VentureRepository $ventureRepository,
+        private readonly ArticleRepository  $articleRepository,
+        private readonly VentureRepository  $ventureRepository,
         private readonly PaginatorInterface $paginator,
-        private readonly EmailRepository $emailRepository,
+        private readonly EmailRepository    $emailRepository,
     )
     {
     }
@@ -114,7 +115,7 @@ class AppController extends AbstractController
                 'loc' => $this->generateUrl(route: 'article', parameters: [
                     'slug' => $article->getSlug(),
                 ], referenceType: UrlGeneratorInterface::ABSOLUTE_URL),
-                'lastmod' => $article->getUpdatedAt()->toIso8601String(),
+                'lastmod' => $article->getUpdatedAt() instanceof CarbonImmutable ? $article->getUpdatedAt()->toIso8601String() : $article->getCreatedAt()->toIso8601String(),
                 'changefreq' => 'weekly',
                 'priority' => '0.5',
             ];
