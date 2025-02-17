@@ -17,7 +17,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
             'app_admin_provider' => [
                 'entity' => [
                     'class' => Admin::class,
-                    'property' => 'email'
+                    'property' => 'email',
                 ],
             ],
         ],

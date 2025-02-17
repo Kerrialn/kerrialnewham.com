@@ -99,23 +99,29 @@ class AppController extends AbstractController
         ]);
     }
 
-    #[Route('/sitemap.xml', name: 'sitemap', defaults: ['_format' => 'xml'])]
+    #[Route('/sitemap.xml', name: 'sitemap', defaults: [
+        '_format' => 'xml',
+    ])]
     public function sitemap(): Response
     {
-        $articles = $this->articleRepository->findBy(criteria: [], orderBy: ['createdAt' => Order::Descending->value], limit: 30);
+        $articles = $this->articleRepository->findBy(criteria: [], orderBy: [
+            'createdAt' => Order::Descending->value,
+        ], limit: 30);
         $articleUrls = [];
 
         foreach ($articles as $article) {
             $articleUrls[] = [
-                'loc' => $this->generateUrl(route: 'article', parameters: ['slug' => $article->getSlug()], referenceType: UrlGeneratorInterface::ABSOLUTE_URL),
+                'loc' => $this->generateUrl(route: 'article', parameters: [
+                    'slug' => $article->getSlug(),
+                ], referenceType: UrlGeneratorInterface::ABSOLUTE_URL),
                 'lastmod' => $article->getUpdatedAt()->toIso8601String(),
                 'changefreq' => 'weekly',
-                'priority' => '0.5'
+                'priority' => '0.5',
             ];
         }
 
         return $this->render('app/sitemap.xml.twig', [
-            'articleUrls' => $articleUrls
+            'articleUrls' => $articleUrls,
         ])->setSharedMaxAge(3600);
     }
 }
