@@ -21,10 +21,10 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 class AppController extends AbstractController
 {
     public function __construct(
-        private readonly ArticleRepository  $articleRepository,
-        private readonly VentureRepository  $ventureRepository,
+        private readonly ArticleRepository $articleRepository,
+        private readonly VentureRepository $ventureRepository,
         private readonly PaginatorInterface $paginator,
-        private readonly EmailRepository    $emailRepository,
+        private readonly EmailRepository $emailRepository,
     )
     {
     }
