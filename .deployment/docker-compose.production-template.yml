@@ -16,6 +16,7 @@ services:
       - php_socket:/var/run/php
       - ./php/php.ini:/usr/local/etc/php/php.ini
     healthcheck:
+      test: ["CMD-SHELL", "php-fpm -t"]
       interval: 10s
       timeout: 3s
       retries: 3
