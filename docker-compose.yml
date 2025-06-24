@@ -6,11 +6,11 @@ services:
       - .:/app:cached
       - php_socket:/var/run/php
     healthcheck:
+      test: ["CMD-SHELL", "php-fpm -t"]
       interval: 10s
       timeout: 3s
       retries: 3
       start_period: 30s
-      test: 30s
     depends_on:
       - database
 
